@@ -60,7 +60,7 @@ class MysqlOperate:
         self.__conn_db()
         # 操作数据库查询
         self.cursor.execute(sql)
-        query_data = self.cur.fetchall()
+        query_data = self.cursor.fetchall()
         # 如果查询的是空，就返回None
         if query_data == ():
             query_data = None
@@ -90,20 +90,20 @@ class MysqlOperate:
         # return出查询的接口
         return True
 
-# 导入 MysqlOperate 类
-from mysql_operate import MysqlOperate
-
-# 实例化 MysqlOperate 类
-mysql_handler = MysqlOperate()
-
-# 执行查询操作
-query_sql = "SELECT * FROM monitor_asin_abnormal WHERE task_detail_type = 13"
-query_result = mysql_handler.query(query_sql)
-
-# 处理查询结果
-if query_result:
-    for row in query_result:
-        # 处理每一行数据
-        print(row)
-else:
-    print("没有获取到数据")
+# # 导入 MysqlOperate 类
+# from mysql_operate import MysqlOperate
+#
+# # 实例化 MysqlOperate 类
+# mysql_handler = MysqlOperate()
+#
+# # 执行查询操作
+# query_sql = "SELECT * FROM spider.monitor_asin_abnormal WHERE task_detail_type = 13"
+# query_result = mysql_handler.query(query_sql)
+#
+# # 处理查询结果
+# if query_result:
+#     for row in query_result:
+#         # 处理每一行数据
+#         print(row)
+# else:
+#     print("没有获取到数据")

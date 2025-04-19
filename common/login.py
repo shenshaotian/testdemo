@@ -18,7 +18,7 @@ def login(user):
         "pwd": f"{password}"
     }
     # 执行接口请求
-    login_res = Requests().post_request("/login", data=login_data)
+    login_res = Requests().post_request("https://gw.lingxingerp.com/newadmin/api/passport/login", data=login_data)
     # 返回出参
     return login_res
 

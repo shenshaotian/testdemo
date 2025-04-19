@@ -17,8 +17,8 @@ class Requests:
         """
         self.s = requests.Session()
         # 在session实例上挂载adapter实例，目的就是请求异常时，自动重试
-        self.s.mount("http://", HTTPAdapter(max_retries=3))
-        self.s.mount("https://", HTTPAdapter(max_retries=3))
+        # self.s.mount("https://www.baidu.com", HTTPAdapter(max_retries=3))
+        self.s.mount("/svip/homePage/OverviewUserGroupDoneRate", HTTPAdapter(max_retries=3))
 
         # 公共请求头设置，把对应的值设置好
         self.s.headers = headers
@@ -67,6 +67,19 @@ class Requests:
         deal_with_res(json, res)
         return res
 
+    def put_request(self, url, data=None, json=None):
+        if data:
+            res = self.s.put(self.url + url, data=data, timeout=self.timeout)
+            deal_with_res(data, res)
+            return res
+        if json:
+            res = self.s.put(self.url + url, json=json, timeout=self.timeout)
+            deal_with_res(json, res)
+            return res
+        res = self.s.put(self.url + url, timeout=self.timeout)
+        deal_with_res(json, res)
+        return res
+
     # 魔法函数
     def __del__(self):
         """
@@ -75,9 +88,10 @@ class Requests:
         """
         if self.s:
             self.s.close()
-# 测试一下下
-if __name__ == '__main__':
-    # 这里域名设置的是http://httpbin.org，懂得都懂
-    get_res = Requests().get_request("/get")
-    post_res = Requests().post_request("/post")
-    print(get_res.text, "\n", post_res.text, "\n")
+
+
+# # 测试一下下
+# if __name__ == '__main__':
+#     # # 这里域名设置的是http://httpbin.org，懂得都懂
+#     # get_res = Requests().get_request("/svip/homePage/OverviewUserGroupDoneRate")
+#     # print(get_res.text, "\n", )
