@@ -1,0 +1,60 @@
+[2025-06-07 18:09:41,665][test_case.py 31][INFO]: ** 开始执行用例 **
+[2025-06-07 18:09:41,762][test_case.py 51][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/addNewProduct
+[2025-06-07 18:09:41,762][test_case.py 52][INFO]: 请求 参数: {'local_sku': 'PT-JJ-00047-BL-00', 'product_name': '17*33in 电暖垫（天蓝）', 'product_id': 10917, 'images': 'https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg', 'country': 'US', 'selling_partner_id': 'A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F', 'user_id': 15, 'department': 'SJY', 'small_class': 'Heating Pads', 'remark': '测试1'}
+[2025-06-07 18:09:41,762][test_case.py 53][INFO]: 请求 response: {'message': '该本地SKU已存在', 'code': 501, 'data': {}}
+[2025-06-07 18:09:41,762][test_case.py 54][INFO]: ** 结束执行用例 **
+[2025-06-07 18:09:41,863][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:09:41,984][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:09:42,069][test_case.py 90][INFO]: ** 开始执行用例 **
+[2025-06-07 18:09:42,141][test_case.py 104][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/updateNewProduct
+[2025-06-07 18:09:42,141][test_case.py 105][INFO]: 请求 参数: {'new_product_id': 47, 'user_id': '15'}
+[2025-06-07 18:09:42,141][test_case.py 106][INFO]: 请求 response: {'message': '成功', 'code': 200, 'data': {'user_id': 15}}
+[2025-06-07 18:09:42,141][test_case.py 107][INFO]: ** 结束执行用例 **
+[2025-06-07 18:09:42,150][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:09:42,245][test_case.py 117][INFO]: ** 开始执行用例 **
+[2025-06-07 18:09:42,304][test_case.py 128][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/deleteNewProduct?new_product_id=47
+[2025-06-07 18:09:42,304][test_case.py 129][INFO]: 请求 参数: new_product_id=47
+[2025-06-07 18:09:42,305][test_case.py 130][INFO]: 请求 response: {'message': '成功', 'code': 200, 'data': None}
+[2025-06-07 18:09:42,305][test_case.py 131][INFO]: ** 结束执行用例 **
+[2025-06-07 18:10:36,079][test_case.py 31][INFO]: ** 开始执行用例 **
+[2025-06-07 18:10:36,189][test_case.py 51][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/addNewProduct
+[2025-06-07 18:10:36,190][test_case.py 52][INFO]: 请求 参数: {'local_sku': 'PT-JJ-00047-BL-00', 'product_name': '17*33in 电暖垫（天蓝）', 'product_id': 10917, 'images': 'https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg', 'country': 'US', 'selling_partner_id': 'A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F', 'user_id': 15, 'department': 'SJY', 'small_class': 'Heating Pads', 'remark': '测试1'}
+[2025-06-07 18:10:36,190][test_case.py 53][INFO]: 请求 response: {'message': '该本地SKU已存在', 'code': 501, 'data': {}}
+[2025-06-07 18:10:36,190][test_case.py 54][INFO]: ** 结束执行用例 **
+[2025-06-07 18:10:36,303][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:10:37,426][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:10:37,550][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:15:59,962][test_case.py 31][INFO]: ** 开始执行用例 **
+[2025-06-07 18:16:00,038][test_case.py 51][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/addNewProduct
+[2025-06-07 18:16:00,038][test_case.py 52][INFO]: 请求 参数: {'local_sku': 'PT-JJ-00047-BL-00', 'product_name': '17*33in 电暖垫（天蓝）', 'product_id': 10917, 'images': 'https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg', 'country': 'US', 'selling_partner_id': 'A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F', 'user_id': 15, 'department': 'SJY', 'small_class': 'Heating Pads', 'remark': '测试1'}
+[2025-06-07 18:16:00,038][test_case.py 53][INFO]: 请求 response: {'message': '该本地SKU已存在', 'code': 501, 'data': {}}
+[2025-06-07 18:16:00,038][test_case.py 54][INFO]: ** 结束执行用例 **
+[2025-06-07 18:16:00,128][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:16:00,224][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:16:00,323][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:20:21,438][test_case.py 31][INFO]: ** 开始执行用例 **
+[2025-06-07 18:20:21,514][test_case.py 51][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/addNewProduct
+[2025-06-07 18:20:21,514][test_case.py 52][INFO]: 请求 参数: {'local_sku': 'PT-JJ-00047-BL-00', 'product_name': '17*33in 电暖垫（天蓝）', 'product_id': 10917, 'images': 'https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg', 'country': 'US', 'selling_partner_id': 'A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F', 'user_id': 15, 'department': 'SJY', 'small_class': 'Heating Pads', 'remark': '测试1'}
+[2025-06-07 18:20:21,515][test_case.py 53][INFO]: 请求 response: {'message': '该本地SKU已存在', 'code': 501, 'data': {}}
+[2025-06-07 18:20:21,515][test_case.py 54][INFO]: ** 结束执行用例 **
+[2025-06-07 18:20:21,605][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:20:21,702][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:20:21,810][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:22:44,501][test_case.py 31][INFO]: ** 开始执行用例 **
+[2025-06-07 18:22:44,644][test_case.py 51][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/addNewProduct
+[2025-06-07 18:22:44,644][test_case.py 52][INFO]: 请求 参数: {'local_sku': 'PT-JJ-00047-BL-00', 'product_name': '17*33in 电暖垫（天蓝）', 'product_id': 10917, 'images': 'https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg', 'country': 'US', 'selling_partner_id': 'A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F', 'user_id': 15, 'department': 'SJY', 'small_class': 'Heating Pads', 'remark': '测试1'}
+[2025-06-07 18:22:44,645][test_case.py 53][INFO]: 请求 response: {'message': '成功', 'code': 200, 'data': None}
+[2025-06-07 18:22:44,645][test_case.py 54][INFO]: ** 结束执行用例 **
+[2025-06-07 18:22:44,653][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:22:44,754][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:22:44,857][test_case.py 90][INFO]: ** 开始执行用例 **
+[2025-06-07 18:22:44,929][test_case.py 104][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/updateNewProduct
+[2025-06-07 18:22:44,929][test_case.py 105][INFO]: 请求 参数: {'new_product_id': 48, 'user_id': '15'}
+[2025-06-07 18:22:44,929][test_case.py 106][INFO]: 请求 response: {'message': '成功', 'code': 200, 'data': {'user_id': 15}}
+[2025-06-07 18:22:44,929][test_case.py 107][INFO]: ** 结束执行用例 **
+[2025-06-07 18:22:44,936][test_case.py 63][INFO]: ** 开始执行用例 **
+[2025-06-07 18:22:45,042][test_case.py 117][INFO]: ** 开始执行用例 **
+[2025-06-07 18:22:45,123][test_case.py 128][INFO]: 请求 URL: https://www.test.aiautoex.com/svip/product/deleteNewProduct?new_product_id=48
+[2025-06-07 18:22:45,123][test_case.py 129][INFO]: 请求 参数: new_product_id=48
+[2025-06-07 18:22:45,123][test_case.py 130][INFO]: 请求 response: {'message': '成功', 'code': 200, 'data': None}
+[2025-06-07 18:22:45,123][test_case.py 131][INFO]: ** 结束执行用例 **

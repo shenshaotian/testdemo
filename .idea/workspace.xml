@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="114d4229-aab0-440c-b17c-2b1f09f428c8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/common/logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testcases/test_case.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/test_case_demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test_case_demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/commom_requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/commom_requests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/mysql_operate.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/mysql_operate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_yaml.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_yaml.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testcases/case.py" beforeDir="false" />
-    </list>
+    <list default="true" id="114d4229-aab0-440c-b17c-2b1f09f428c8" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

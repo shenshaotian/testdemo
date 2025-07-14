@@ -1,0 +1,140 @@
+{
+  "79720daec0dbbfb1fe6213b5cf665b6b" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "c8931c2ca1de943c",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: 新增失败: token验证失败-请先登录\nassert 4101 == 200",
+      "time" : {
+        "start" : 1751440878124,
+        "stop" : 1751440878232,
+        "duration" : 108
+      }
+    } ]
+  },
+  "921ae2ce5af3d7efb4c52fe547952a1d" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "42d7eb7a953f5cfd",
+      "status" : "passed",
+      "time" : {
+        "start" : 1752481314726,
+        "stop" : 1752481315040,
+        "duration" : 314
+      }
+    } ]
+  },
+  "681705060763ba78ceeb7b943d4f1ab0" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "3b6d081b84f2d135",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: 获取列表失败: token验证失败-请先登录\nassert 4101 == 200",
+      "time" : {
+        "start" : 1751440878278,
+        "stop" : 1751440878329,
+        "duration" : 51
+      }
+    } ]
+  },
+  "f1b4a03a40a283fd26655f0f61a8240b" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "14fcebce56dc0b3d",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: 获取新品列表失败\nassert 4101 == 200",
+      "time" : {
+        "start" : 1751440878334,
+        "stop" : 1751440878334,
+        "duration" : 0
+      }
+    } ]
+  },
+  "e89889028b37cd86f395d0849dd7af55" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "951547dc302d11bb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1752481314469,
+        "stop" : 1752481314721,
+        "duration" : 252
+      }
+    } ]
+  },
+  "26fd453fc8bc82a78331b44ea5513c51" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "b36a60d6389be9df",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: 获取新品列表失败\nassert 4101 == 200",
+      "time" : {
+        "start" : 1751440878411,
+        "stop" : 1751440878411,
+        "duration" : 0
+      }
+    } ]
+  },
+  "714b2ec4ee8aadceb825957ff7b9e8ca" : {
+    "statistic" : {
+      "failed" : 1,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 0,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "ed3ede296a1d2309",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert 501 == 200",
+      "time" : {
+        "start" : 1752481314261,
+        "stop" : 1752481314355,
+        "duration" : 94
+      }
+    } ]
+  }
+}

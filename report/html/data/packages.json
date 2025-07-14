@@ -1,0 +1,100 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "testcases.test_case",
+    "children" : [ {
+      "name" : "test_add_new_product",
+      "uid" : "c8931c2ca1de943c",
+      "parentUid" : "cd0d8e59b28a7ca3b4f13bc1628db635",
+      "status" : "failed",
+      "time" : {
+        "start" : 1751440878124,
+        "stop" : 1751440878232,
+        "duration" : 108
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_get_product_list",
+      "uid" : "3b6d081b84f2d135",
+      "parentUid" : "cd0d8e59b28a7ca3b4f13bc1628db635",
+      "status" : "failed",
+      "time" : {
+        "start" : 1751440878278,
+        "stop" : 1751440878329,
+        "duration" : 51
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_update_product_manager",
+      "uid" : "14fcebce56dc0b3d",
+      "parentUid" : "cd0d8e59b28a7ca3b4f13bc1628db635",
+      "status" : "failed",
+      "time" : {
+        "start" : 1751440878334,
+        "stop" : 1751440878334,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_archive_product",
+      "uid" : "b36a60d6389be9df",
+      "parentUid" : "cd0d8e59b28a7ca3b4f13bc1628db635",
+      "status" : "failed",
+      "time" : {
+        "start" : 1751440878411,
+        "stop" : 1751440878411,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_new_porduct",
+      "uid" : "ed3ede296a1d2309",
+      "parentUid" : "cd0d8e59b28a7ca3b4f13bc1628db635",
+      "status" : "failed",
+      "time" : {
+        "start" : 1752481314261,
+        "stop" : 1752481314355,
+        "duration" : 94
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_get_list_product",
+      "uid" : "951547dc302d11bb",
+      "parentUid" : "cd0d8e59b28a7ca3b4f13bc1628db635",
+      "status" : "passed",
+      "time" : {
+        "start" : 1752481314469,
+        "stop" : 1752481314721,
+        "duration" : 252
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "test_set_operations_manager",
+      "uid" : "42d7eb7a953f5cfd",
+      "parentUid" : "cd0d8e59b28a7ca3b4f13bc1628db635",
+      "status" : "passed",
+      "time" : {
+        "start" : 1752481314726,
+        "stop" : 1752481315040,
+        "duration" : 314
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "testcases.test_case"
+  } ]
+}

@@ -1,0 +1,8 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"failed","Wed Jul 02 15:21:18 GMT+08:00 2025","Wed Jul 02 15:21:18 GMT+08:00 2025","108","testcases","test_case","TestProductManagement","","","test_add_new_product","测试新增新品功能"
+"passed","Mon Jul 14 16:21:54 GMT+08:00 2025","Mon Jul 14 16:21:55 GMT+08:00 2025","314","testcases","test_case","TestAddUser","","","test_set_operations_manager",""
+"failed","Mon Jul 14 16:21:54 GMT+08:00 2025","Mon Jul 14 16:21:54 GMT+08:00 2025","94","testcases","test_case","TestAddUser","","","test_new_porduct",""
+"failed","Wed Jul 02 15:21:18 GMT+08:00 2025","Wed Jul 02 15:21:18 GMT+08:00 2025","0","testcases","test_case","TestProductManagement","","","test_update_product_manager","测试更新产品负责人功能"
+"passed","Mon Jul 14 16:21:54 GMT+08:00 2025","Mon Jul 14 16:21:54 GMT+08:00 2025","252","testcases","test_case","TestAddUser","","","test_get_list_product",""
+"failed","Wed Jul 02 15:21:18 GMT+08:00 2025","Wed Jul 02 15:21:18 GMT+08:00 2025","0","testcases","test_case","TestProductManagement","","","test_archive_product","测试新品归档功能"
+"failed","Wed Jul 02 15:21:18 GMT+08:00 2025","Wed Jul 02 15:21:18 GMT+08:00 2025","51","testcases","test_case","TestProductManagement","","","test_get_product_list","测试获取新品列表功能"

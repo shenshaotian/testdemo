@@ -1,0 +1,4 @@
+[2025-07-02 15:21:18,333][test_case.py 51][INFO]: ** 开始获取新品ID **
+[2025-07-02 15:21:18,387][test_case.py 59][INFO]: 请求URL: https://www.test.aiautoex.com/svip/product/getNewProductList
+[2025-07-02 15:21:18,387][test_case.py 60][INFO]: 请求参数: {'page': 1, 'page_size': 20}
+[2025-07-02 15:21:18,388][test_case.py 61][INFO]: 请求响应: {'message': 'token验证失败-请先登录', 'code': 4101, 'data': None}

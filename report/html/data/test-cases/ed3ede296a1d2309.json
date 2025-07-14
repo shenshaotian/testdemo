@@ -1,0 +1,187 @@
+{
+  "uid" : "ed3ede296a1d2309",
+  "name" : "test_new_porduct",
+  "fullName" : "testcases.test_case.TestAddUser#test_new_porduct",
+  "historyId" : "714b2ec4ee8aadceb825957ff7b9e8ca",
+  "time" : {
+    "start" : 1752481314261,
+    "stop" : 1752481314355,
+    "duration" : 94
+  },
+  "status" : "failed",
+  "statusMessage" : "AssertionError: assert 501 == 200",
+  "statusTrace" : "self = <test_case.TestAddUser object at 0x0000027859AE4510>\n\n    def test_new_porduct(self):\n        token = get_token()  # 获取 token\n        logger.info(\"** 开始执行用例 **\")\n        with allure.step(\"获取登录token\"):\n            header = {\n                \"Authorization\": token\n            }\n            json_data = {\n                \"local_sku\": \"PT-JJ-00047-BL-00\",\n                \"product_name\": \"17*33in 电暖垫（天蓝）\",\n                \"product_id\": 10917,\n                \"images\": \"https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg\",\n                \"country\": \"US\",\n                \"selling_partner_id\": \"A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F\",\n                \"user_id\": 15,\n                \"department\": \"SJY\",\n                \"small_class\": \"Heating Pads\",\n                \"remark\": \"测试1\"\n            }\n    \n        with allure.step(\"新增新品产品\"):\n            res = Requests(headers=header).put_request(\"/svip/product/addNewProduct\", json=json_data)\n            logger.info(\"请求 URL: {}\".format(res.request.url))\n            logger.info(\"请求 参数: {}\".format(json_data))\n            logger.info(\"请求 response: {}\".format(res.json()))\n            logger.info(\"** 结束执行用例 **\")\n    \n        with allure.step(\"断言\"):\n>           assert res.json()[\"code\"] == 200\nE           assert 501 == 200\n\ntestcases\\test_case.py:57: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "failed",
+    "statusMessage" : "AssertionError: assert 501 == 200",
+    "statusTrace" : "self = <test_case.TestAddUser object at 0x0000027859AE4510>\n\n    def test_new_porduct(self):\n        token = get_token()  # 获取 token\n        logger.info(\"** 开始执行用例 **\")\n        with allure.step(\"获取登录token\"):\n            header = {\n                \"Authorization\": token\n            }\n            json_data = {\n                \"local_sku\": \"PT-JJ-00047-BL-00\",\n                \"product_name\": \"17*33in 电暖垫（天蓝）\",\n                \"product_id\": 10917,\n                \"images\": \"https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg\",\n                \"country\": \"US\",\n                \"selling_partner_id\": \"A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F\",\n                \"user_id\": 15,\n                \"department\": \"SJY\",\n                \"small_class\": \"Heating Pads\",\n                \"remark\": \"测试1\"\n            }\n    \n        with allure.step(\"新增新品产品\"):\n            res = Requests(headers=header).put_request(\"/svip/product/addNewProduct\", json=json_data)\n            logger.info(\"请求 URL: {}\".format(res.request.url))\n            logger.info(\"请求 参数: {}\".format(json_data))\n            logger.info(\"请求 response: {}\".format(res.json()))\n            logger.info(\"** 结束执行用例 **\")\n    \n        with allure.step(\"断言\"):\n>           assert res.json()[\"code\"] == 200\nE           assert 501 == 200\n\ntestcases\\test_case.py:57: AssertionError",
+    "steps" : [ {
+      "name" : "获取登录token",
+      "time" : {
+        "start" : 1752481314263,
+        "stop" : 1752481314263,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "新增新品产品",
+      "time" : {
+        "start" : 1752481314263,
+        "stop" : 1752481314354,
+        "duration" : 91
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "966d2dcf22a17368",
+        "name" : "请求的url",
+        "source" : "966d2dcf22a17368.attach",
+        "type" : "text/plain",
+        "size" : 56
+      }, {
+        "uid" : "3fd47cbc0f9ffd10",
+        "name" : "请求的方法",
+        "source" : "3fd47cbc0f9ffd10.attach",
+        "type" : "text/plain",
+        "size" : 3
+      }, {
+        "uid" : "d88a11f65c1da8da",
+        "name" : "请求的headers",
+        "source" : "d88a11f65c1da8da.attach",
+        "type" : "text/plain",
+        "size" : 708
+      }, {
+        "uid" : "9ba858fc38040ec1",
+        "name" : "入参报文",
+        "source" : "9ba858fc38040ec1.attach",
+        "type" : "text/plain",
+        "size" : 416
+      }, {
+        "uid" : "4265d736827faf65",
+        "name" : "响应时间",
+        "source" : "4265d736827faf65.attach",
+        "type" : "text/plain",
+        "size" : 6
+      }, {
+        "uid" : "76d051dcdd96db66",
+        "name" : "状态码",
+        "source" : "76d051dcdd96db66.attach",
+        "type" : "text/plain",
+        "size" : 3
+      }, {
+        "uid" : "fee9c26f5f95bb9f",
+        "name" : "响应报文",
+        "source" : "fee9c26f5f95bb9f.attach",
+        "type" : "text/plain",
+        "size" : 56
+      } ],
+      "parameters" : [ ],
+      "attachmentsCount" : 7,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true,
+      "stepsCount" : 0
+    }, {
+      "name" : "断言",
+      "time" : {
+        "start" : 1752481314354,
+        "stop" : 1752481314354,
+        "duration" : 0
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: assert 501 == 200\n",
+      "statusTrace" : "  File \"C:\\test_case_demo\\testcases\\test_case.py\", line 57, in test_new_porduct\n    assert res.json()[\"code\"] == 200\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "e5927cc9a5922d3f",
+      "name" : "log",
+      "source" : "e5927cc9a5922d3f.txt",
+      "type" : "text/plain",
+      "size" : 774
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 8,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 3
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "新品管理"
+  }, {
+    "name" : "tag",
+    "value" : "新增新品SKU"
+  }, {
+    "name" : "tag",
+    "value" : "@pytest.mark.filterwarnings('ignore::DeprecationWarning')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "testcases"
+  }, {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestAddUser"
+  }, {
+    "name" : "host",
+    "value" : "SST"
+  }, {
+    "name" : "thread",
+    "value" : "27124-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "testcases.test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "e47ec98a8877d0ec",
+      "status" : "failed",
+      "statusDetails" : "AssertionError: assert 4101 == 200",
+      "time" : {
+        "start" : 1752481196261,
+        "stop" : 1752481196356,
+        "duration" : 95
+      }
+    } ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "新增新品SKU", "@pytest.mark.filterwarnings('ignore::DeprecationWarning')" ]
+  },
+  "source" : "ed3ede296a1d2309.json",
+  "parameterValues" : [ ]
+}

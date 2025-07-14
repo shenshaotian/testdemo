@@ -1,0 +1,160 @@
+{
+  "uid" : "cbf0f943bb3517b1",
+  "name" : "test_get_list_product",
+  "fullName" : "testcases.test_case.TestAddUser#test_get_list_product",
+  "historyId" : "e89889028b37cd86f395d0849dd7af55",
+  "time" : {
+    "start" : 1752481196413,
+    "stop" : 1752481196465,
+    "duration" : 52
+  },
+  "status" : "broken",
+  "statusMessage" : "TypeError: 'NoneType' object is not subscriptable",
+  "statusTrace" : "self = <test_case.TestAddUser object at 0x0000023058BEA110>\n\n    @allure.story(\"新品管理\")\n    @allure.tag(\"获取新品管理列表\")\n    def test_get_list_product(self):\n        token = get_token()  # 直接调用 get_token() 函数获取 token\n        logger.info(\"** 开始执行用例 **\")\n        with allure.step(\"获取登录token\"):\n            header = {\n                \"Authorization\": token\n            }\n            json_data = {\n                \"page\": 1,\n                \"page_size\": 20\n            }\n    \n        with allure.step(\"获取\"):\n            res = Requests(headers=header).post_request(\"/svip/product/getNewProductList\", json=json_data)\n>           new_product_id = res.json()[\"data\"][\"result\"][0][\"new_product_id\"]\nE           TypeError: 'NoneType' object is not subscriptable\n\ntestcases\\test_case.py:75: TypeError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "testStage" : {
+    "status" : "broken",
+    "statusMessage" : "TypeError: 'NoneType' object is not subscriptable",
+    "statusTrace" : "self = <test_case.TestAddUser object at 0x0000023058BEA110>\n\n    @allure.story(\"新品管理\")\n    @allure.tag(\"获取新品管理列表\")\n    def test_get_list_product(self):\n        token = get_token()  # 直接调用 get_token() 函数获取 token\n        logger.info(\"** 开始执行用例 **\")\n        with allure.step(\"获取登录token\"):\n            header = {\n                \"Authorization\": token\n            }\n            json_data = {\n                \"page\": 1,\n                \"page_size\": 20\n            }\n    \n        with allure.step(\"获取\"):\n            res = Requests(headers=header).post_request(\"/svip/product/getNewProductList\", json=json_data)\n>           new_product_id = res.json()[\"data\"][\"result\"][0][\"new_product_id\"]\nE           TypeError: 'NoneType' object is not subscriptable\n\ntestcases\\test_case.py:75: TypeError",
+    "steps" : [ {
+      "name" : "获取登录token",
+      "time" : {
+        "start" : 1752481196413,
+        "stop" : 1752481196413,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "获取",
+      "time" : {
+        "start" : 1752481196413,
+        "stop" : 1752481196465,
+        "duration" : 52
+      },
+      "status" : "broken",
+      "statusMessage" : "TypeError: 'NoneType' object is not subscriptable\n",
+      "statusTrace" : "  File \"C:\\test_case_demo\\testcases\\test_case.py\", line 75, in test_get_list_product\n    new_product_id = res.json()[\"data\"][\"result\"][0][\"new_product_id\"]\n                     ~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "b0c354cfdb644e06",
+        "name" : "请求的url",
+        "source" : "b0c354cfdb644e06.attach",
+        "type" : "text/plain",
+        "size" : 60
+      }, {
+        "uid" : "1c3516730167a32b",
+        "name" : "请求的方法",
+        "source" : "1c3516730167a32b.attach",
+        "type" : "text/plain",
+        "size" : 4
+      }, {
+        "uid" : "4f1746c52340d7a1",
+        "name" : "请求的headers",
+        "source" : "4f1746c52340d7a1.attach",
+        "type" : "text/plain",
+        "size" : 705
+      }, {
+        "uid" : "1edc3fd0ed5447e5",
+        "name" : "入参报文",
+        "source" : "1edc3fd0ed5447e5.attach",
+        "type" : "text/plain",
+        "size" : 28
+      }, {
+        "uid" : "dacae464548070fb",
+        "name" : "响应时间",
+        "source" : "dacae464548070fb.attach",
+        "type" : "text/plain",
+        "size" : 6
+      }, {
+        "uid" : "8134d2d5a8538837",
+        "name" : "状态码",
+        "source" : "8134d2d5a8538837.attach",
+        "type" : "text/plain",
+        "size" : 3
+      }, {
+        "uid" : "6d7be4a387e7c481",
+        "name" : "响应报文",
+        "source" : "6d7be4a387e7c481.attach",
+        "type" : "text/plain",
+        "size" : 68
+      } ],
+      "parameters" : [ ],
+      "attachmentsCount" : 7,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "4ed097345d85fd00",
+      "name" : "log",
+      "source" : "4ed097345d85fd00.txt",
+      "type" : "text/plain",
+      "size" : 53
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 8,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 2
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "新品管理"
+  }, {
+    "name" : "tag",
+    "value" : "新增新品SKU"
+  }, {
+    "name" : "tag",
+    "value" : "获取新品管理列表"
+  }, {
+    "name" : "tag",
+    "value" : "@pytest.mark.filterwarnings('ignore::DeprecationWarning')"
+  }, {
+    "name" : "parentSuite",
+    "value" : "testcases"
+  }, {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestAddUser"
+  }, {
+    "name" : "host",
+    "value" : "SST"
+  }, {
+    "name" : "thread",
+    "value" : "3432-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "testcases.test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ "新增新品SKU", "@pytest.mark.filterwarnings('ignore::DeprecationWarning')", "获取新品管理列表" ]
+  },
+  "source" : "cbf0f943bb3517b1.json",
+  "parameterValues" : [ ]
+}

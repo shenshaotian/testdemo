@@ -1,0 +1,199 @@
+{
+  "uid" : "3b6d081b84f2d135",
+  "name" : "test_get_product_list",
+  "fullName" : "testcases.test_case.TestProductManagement#test_get_product_list",
+  "historyId" : "681705060763ba78ceeb7b943d4f1ab0",
+  "time" : {
+    "start" : 1751440878278,
+    "stop" : 1751440878329,
+    "duration" : 51
+  },
+  "description" : "测试获取新品列表功能",
+  "descriptionHtml" : "<p>测试获取新品列表功能</p>\n",
+  "status" : "failed",
+  "statusMessage" : "AssertionError: 获取列表失败: token验证失败-请先登录\nassert 4101 == 200",
+  "statusTrace" : "self = <test_case.TestProductManagement object at 0x000001FAA4B91390>\nsetup_class = None\n\n    @allure.tag(\"获取新品列表\")\n    def test_get_product_list(self, setup_class):\n        \"\"\"测试获取新品列表功能\"\"\"\n        logger.info(\"** 开始执行获取新品列表测试 **\")\n    \n        with allure.step(\"准备请求参数\"):\n            params = {\"page\": 1, \"page_size\": 20}\n    \n        with allure.step(\"发送获取列表请求\"):\n            res = Requests(headers=self.headers).post_request(\n                \"/svip/product/getNewProductList\",\n                json=params\n            )\n            response = res.json()\n            logger.info(f\"API响应: {response}\")\n    \n        with allure.step(\"验证响应\"):\n>           assert response[\"code\"] == 200, f\"获取列表失败: {response.get('message', '未知错误')}\"\nE           AssertionError: 获取列表失败: token验证失败-请先登录\nE           assert 4101 == 200\n\ntestcases\\test_case.py:108: AssertionError",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "setup_class",
+    "time" : {
+      "start" : 1751440878119,
+      "stop" : 1751440878124,
+      "duration" : 5
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false,
+    "stepsCount" : 0
+  } ],
+  "testStage" : {
+    "description" : "测试获取新品列表功能",
+    "status" : "failed",
+    "statusMessage" : "AssertionError: 获取列表失败: token验证失败-请先登录\nassert 4101 == 200",
+    "statusTrace" : "self = <test_case.TestProductManagement object at 0x000001FAA4B91390>\nsetup_class = None\n\n    @allure.tag(\"获取新品列表\")\n    def test_get_product_list(self, setup_class):\n        \"\"\"测试获取新品列表功能\"\"\"\n        logger.info(\"** 开始执行获取新品列表测试 **\")\n    \n        with allure.step(\"准备请求参数\"):\n            params = {\"page\": 1, \"page_size\": 20}\n    \n        with allure.step(\"发送获取列表请求\"):\n            res = Requests(headers=self.headers).post_request(\n                \"/svip/product/getNewProductList\",\n                json=params\n            )\n            response = res.json()\n            logger.info(f\"API响应: {response}\")\n    \n        with allure.step(\"验证响应\"):\n>           assert response[\"code\"] == 200, f\"获取列表失败: {response.get('message', '未知错误')}\"\nE           AssertionError: 获取列表失败: token验证失败-请先登录\nE           assert 4101 == 200\n\ntestcases\\test_case.py:108: AssertionError",
+    "steps" : [ {
+      "name" : "准备请求参数",
+      "time" : {
+        "start" : 1751440878279,
+        "stop" : 1751440878279,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false,
+      "stepsCount" : 0
+    }, {
+      "name" : "发送获取列表请求",
+      "time" : {
+        "start" : 1751440878279,
+        "stop" : 1751440878328,
+        "duration" : 49
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ {
+        "uid" : "1f4ea9d03cd4d6db",
+        "name" : "请求的url",
+        "source" : "1f4ea9d03cd4d6db.attach",
+        "type" : "text/plain",
+        "size" : 60
+      }, {
+        "uid" : "282bf1a14d84ada6",
+        "name" : "请求的方法",
+        "source" : "282bf1a14d84ada6.attach",
+        "type" : "text/plain",
+        "size" : 4
+      }, {
+        "uid" : "2994f295c48732d",
+        "name" : "请求的headers",
+        "source" : "2994f295c48732d.attach",
+        "type" : "text/plain",
+        "size" : 707
+      }, {
+        "uid" : "efeb2c23e0afc036",
+        "name" : "入参报文",
+        "source" : "efeb2c23e0afc036.attach",
+        "type" : "text/plain",
+        "size" : 28
+      }, {
+        "uid" : "6553c4febcbc2fda",
+        "name" : "响应时间",
+        "source" : "6553c4febcbc2fda.attach",
+        "type" : "text/plain",
+        "size" : 6
+      }, {
+        "uid" : "c9dcbd5e0f2f69e7",
+        "name" : "状态码",
+        "source" : "c9dcbd5e0f2f69e7.attach",
+        "type" : "text/plain",
+        "size" : 3
+      }, {
+        "uid" : "2021b901ce54a4c2",
+        "name" : "响应报文",
+        "source" : "2021b901ce54a4c2.attach",
+        "type" : "text/plain",
+        "size" : 68
+      } ],
+      "parameters" : [ ],
+      "attachmentsCount" : 7,
+      "shouldDisplayMessage" : false,
+      "hasContent" : true,
+      "stepsCount" : 0
+    }, {
+      "name" : "验证响应",
+      "time" : {
+        "start" : 1751440878328,
+        "stop" : 1751440878329,
+        "duration" : 1
+      },
+      "status" : "failed",
+      "statusMessage" : "AssertionError: 获取列表失败: token验证失败-请先登录\nassert 4101 == 200\n",
+      "statusTrace" : "  File \"C:\\test_case_demo\\testcases\\test_case.py\", line 108, in test_get_product_list\n    assert response[\"code\"] == 200, f\"获取列表失败: {response.get('message', '未知错误')}\"\n",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : true,
+      "hasContent" : true,
+      "stepsCount" : 0
+    } ],
+    "attachments" : [ {
+      "uid" : "92e4973e7dc38545",
+      "name" : "log",
+      "source" : "92e4973e7dc38545.txt",
+      "type" : "text/plain",
+      "size" : 186
+    }, {
+      "uid" : "465cd632ebbfa80d",
+      "name" : "stderr",
+      "source" : "465cd632ebbfa80d.txt",
+      "type" : "text/plain",
+      "size" : 229
+    } ],
+    "parameters" : [ ],
+    "attachmentsCount" : 9,
+    "shouldDisplayMessage" : true,
+    "hasContent" : true,
+    "stepsCount" : 3
+  },
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "新品管理"
+  }, {
+    "name" : "tag",
+    "value" : "获取新品列表"
+  }, {
+    "name" : "parentSuite",
+    "value" : "testcases"
+  }, {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestProductManagement"
+  }, {
+    "name" : "host",
+    "value" : "SST"
+  }, {
+    "name" : "thread",
+    "value" : "37824-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "testcases.test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ {
+      "name" : "Product defects",
+      "matchedStatuses" : [ ],
+      "flaky" : false
+    } ],
+    "tags" : [ "获取新品列表" ]
+  },
+  "source" : "3b6d081b84f2d135.json",
+  "parameterValues" : [ ]
+}

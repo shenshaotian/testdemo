@@ -1,0 +1,2 @@
+[2025-07-02 15:21:18,124][test_case.py 74][INFO]: ** 开始执行新增新品测试 **
+[2025-07-02 15:21:18,224][test_case.py 85][INFO]: API响应: {'message': 'token验证失败-请先登录', 'code': 4101, 'data': None}

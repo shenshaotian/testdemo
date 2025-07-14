@@ -1,0 +1,71 @@
+[ {
+  "uid" : "c8931c2ca1de943c",
+  "name" : "test_add_new_product",
+  "time" : {
+    "start" : 1751440878124,
+    "stop" : 1751440878232,
+    "duration" : 108
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "42d7eb7a953f5cfd",
+  "name" : "test_set_operations_manager",
+  "time" : {
+    "start" : 1752481314726,
+    "stop" : 1752481315040,
+    "duration" : 314
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ed3ede296a1d2309",
+  "name" : "test_new_porduct",
+  "time" : {
+    "start" : 1752481314261,
+    "stop" : 1752481314355,
+    "duration" : 94
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "14fcebce56dc0b3d",
+  "name" : "test_update_product_manager",
+  "time" : {
+    "start" : 1751440878334,
+    "stop" : 1751440878334,
+    "duration" : 0
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "951547dc302d11bb",
+  "name" : "test_get_list_product",
+  "time" : {
+    "start" : 1752481314469,
+    "stop" : 1752481314721,
+    "duration" : 252
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b36a60d6389be9df",
+  "name" : "test_archive_product",
+  "time" : {
+    "start" : 1751440878411,
+    "stop" : 1751440878411,
+    "duration" : 0
+  },
+  "status" : "failed",
+  "severity" : "normal"
+}, {
+  "uid" : "3b6d081b84f2d135",
+  "name" : "test_get_product_list",
+  "time" : {
+    "start" : 1751440878278,
+    "stop" : 1751440878329,
+    "duration" : 51
+  },
+  "status" : "failed",
+  "severity" : "normal"
+} ]

@@ -1,0 +1,90 @@
+{
+  "uid" : "4b4757e66a1912dae1a509f688f20b0f",
+  "name" : "categories",
+  "children" : [ {
+    "name" : "Product defects",
+    "children" : [ {
+      "name" : "AssertionError: 新增失败: token验证失败-请先登录\nassert 4101 == 200",
+      "children" : [ {
+        "name" : "test_add_new_product",
+        "uid" : "c8931c2ca1de943c",
+        "parentUid" : "80c777ca195522ebc7393297d0e1764b",
+        "status" : "failed",
+        "time" : {
+          "start" : 1751440878124,
+          "stop" : 1751440878232,
+          "duration" : 108
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "80c777ca195522ebc7393297d0e1764b"
+    }, {
+      "name" : "AssertionError: 获取列表失败: token验证失败-请先登录\nassert 4101 == 200",
+      "children" : [ {
+        "name" : "test_get_product_list",
+        "uid" : "3b6d081b84f2d135",
+        "parentUid" : "7f60a6aea521b9a530de468d66d951fe",
+        "status" : "failed",
+        "time" : {
+          "start" : 1751440878278,
+          "stop" : 1751440878329,
+          "duration" : 51
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "7f60a6aea521b9a530de468d66d951fe"
+    }, {
+      "name" : "AssertionError: 获取新品列表失败\nassert 4101 == 200",
+      "children" : [ {
+        "name" : "test_update_product_manager",
+        "uid" : "14fcebce56dc0b3d",
+        "parentUid" : "d35aeabc76c58e8f01b5fc1921325772",
+        "status" : "failed",
+        "time" : {
+          "start" : 1751440878334,
+          "stop" : 1751440878334,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "test_archive_product",
+        "uid" : "b36a60d6389be9df",
+        "parentUid" : "d35aeabc76c58e8f01b5fc1921325772",
+        "status" : "failed",
+        "time" : {
+          "start" : 1751440878411,
+          "stop" : 1751440878411,
+          "duration" : 0
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "d35aeabc76c58e8f01b5fc1921325772"
+    }, {
+      "name" : "AssertionError: assert 501 == 200",
+      "children" : [ {
+        "name" : "test_new_porduct",
+        "uid" : "ed3ede296a1d2309",
+        "parentUid" : "fd427d7f2a1f276813af9015aa6d8345",
+        "status" : "failed",
+        "time" : {
+          "start" : 1752481314261,
+          "stop" : 1752481314355,
+          "duration" : 94
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "fd427d7f2a1f276813af9015aa6d8345"
+    } ],
+    "uid" : "8fb3a91ba5aaf9de24cc8a92edc82b5d"
+  } ]
+}

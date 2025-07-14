@@ -1,0 +1,2 @@
+INFO     log:test_case.py:74 ** 开始执行新增新品测试 **
+INFO     log:test_case.py:85 API响应: {'message': 'token验证失败-请先登录', 'code': 4101, 'data': None}
