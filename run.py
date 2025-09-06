@@ -20,4 +20,4 @@ if __name__ == '__main__':
     os.system(f'allure generate {tmp_dir} -o {html_dir} --clean')
 
     # 可选：自动打开报告
-    # os.system(f'allure open {html_dir}')
+    os.system(f'allure open {html_dir}')

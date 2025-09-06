@@ -4,6 +4,7 @@ import pytest
 import allure
 from common.commom_requests import Requests
 from common.logger import logger
+from common.data_loader import test_data_loader
 import warnings
 
 # 配置忽略警告
@@ -11,13 +12,13 @@ warnings.filterwarnings("ignore")
 
 # 获取配置文件路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
-config_file_path = os.path.join(current_dir, 'config.ini')
+config_file_path = os.path.join(current_dir, '..', 'config.ini')
 
 
 def get_token():
     """获取API访问令牌"""
     config = configparser.ConfigParser()
-    config.read(config_file_path, encoding='utf-8')  # 明确指定编码避免警告
+    config.read(config_file_path, encoding='utf-8')
     return config.get('API', 'TOKEN')
 
 
@@ -30,26 +31,26 @@ def setup_class(request):
     headers = {"Authorization": token}
     request.cls.headers = headers
 
-    # 测试数据
-    request.cls.test_product_data = {
-        "local_sku": "PT-JJ-00047-BL-00",
-        "product_name": "17*33in 电暖垫（天蓝）",
-        "product_id": 10917,
-        "images": "https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg",
-        "country": "US",
-        "selling_partner_id": "A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F",
-        "user_id": 15,
-        "department": "SJY",
-        "small_class": "Heating Pads",
-        "remark": "测试1"
-    }
+    # 从YAML文件加载测试数据
+    try:
+        request.cls.test_product_data = test_data_loader.get_test_data("new_product")
+        request.cls.update_data = test_data_loader.get_test_data("update_data")
+        request.cls.list_params = test_data_loader.get_test_data("list_params")
+        request.cls.restore_to_archived_status = test_data_loader.get_test_data("restore_to_archived_status")
+
+        logger.info("测试数据加载成功")
+    except Exception as e:
+        logger.error(f"加载测试数据失败: {e}")
+        raise
 
 
 @pytest.fixture
 def new_product_id(setup_class, request):
     """获取新品ID的fixture"""
     logger.info("** 开始获取新品ID **")
-    json_data = {"page": 1, "page_size": 20}
+
+    # 使用外部化的列表参数
+    json_data = request.cls.list_params
 
     with allure.step("获取新品列表"):
         res = Requests(headers=request.cls.headers).post_request(
@@ -61,7 +62,10 @@ def new_product_id(setup_class, request):
         logger.info(f"请求响应: {res.json()}")
 
     assert res.json()["code"] == 200, "获取新品列表失败"
-    return res.json()["data"]["result"][0]["new_product_id"]
+    result_data = res.json()["data"]["result"]
+    assert result_data, "新品列表为空，无法获取new_product_id"
+
+    return result_data[0]["new_product_id"]
 
 
 @allure.story("新品管理")
@@ -74,7 +78,7 @@ class TestProductManagement:
         logger.info("** 开始执行新增新品测试 **")
 
         with allure.step("准备测试数据"):
-            test_data = self.test_product_data.copy()  # 使用副本避免修改原始数据
+            test_data = self.test_product_data.copy()
 
         with allure.step("发送新增新品请求"):
             res = Requests(headers=self.headers).put_request(
@@ -83,7 +87,6 @@ class TestProductManagement:
             )
             response = res.json()
             logger.info(f"API响应: {response}")
-
         with allure.step("验证响应"):
             assert response["code"] == 200, f"新增失败: {response.get('message', '未知错误')}"
             assert "data" in response, "响应中缺少data字段"
@@ -94,7 +97,7 @@ class TestProductManagement:
         logger.info("** 开始执行获取新品列表测试 **")
 
         with allure.step("准备请求参数"):
-            params = {"page": 1, "page_size": 20}
+            params = self.list_params
 
         with allure.step("发送获取列表请求"):
             res = Requests(headers=self.headers).post_request(
@@ -117,7 +120,7 @@ class TestProductManagement:
         with allure.step("准备更新数据"):
             update_data = {
                 "new_product_id": new_product_id,
-                "user_id": "15",
+                "user_id": self.update_data["user_id"],
             }
 
         with allure.step("发送更新请求"):
@@ -135,7 +138,6 @@ class TestProductManagement:
     def test_archive_product(self, setup_class, new_product_id):
         """测试新品归档功能"""
         logger.info("** 开始执行新品归档测试 **")
-
         with allure.step("准备归档请求"):
             url = f"/svip/product/deleteNewProduct?new_product_id={new_product_id}"
 
@@ -146,3 +148,18 @@ class TestProductManagement:
 
         with allure.step("验证响应"):
             assert response["code"] == 200, f"归档失败: {response.get('message', '未知错误')}"
+
+    @allure.tag("复原新品")
+    def test_recover_product(self, setup_class,new_product_id):
+        """测试复原新品功能"""
+        logger.info("** 开始执行复原新品测试 **")
+
+        with allure.step("准备复原请求"):
+            url = f"/svip/product/recoverNewProduct?new_product_id={new_product_id}"
+        with allure.step("发送复原请求"):
+            res = Requests(headers=self.headers).put_request(url)
+            response = res.json()
+            logger.info(f"API响应: {response}")
+
+        with allure.step("验证响应"):
+            assert response["code"] == 200, f"复原失败: {response.get('message', '未知错误')}"
