@@ -23,5 +23,3 @@ list_params:
 # 复原归档状态
 restore_to_archived_status:
   new_product_id: 48
-
-
