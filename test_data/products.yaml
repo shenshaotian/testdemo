@@ -1,0 +1,25 @@
+# 新增新品接口数据
+new_product:
+  local_sku: "PT-JJ-00047-BL-00"
+  product_name: "17*33in 电暖垫（天蓝）"
+  product_id: 10917
+  images: "https://image.distributetop.com/lingxing-erp/90136091285737472/20241203/77b839f0564749d99dd7b63a2faa9e57.jpg"
+  country: "US"
+  selling_partner_id: "A3EDESUK4AJJ2G,A3N08DNTN5NG4S,A2D1SGKDVSC5DH,A149ACH9GZTR5F"
+  user_id: 15
+  department: "SJY"
+  small_class: "Heating Pads"
+  remark: "测试1"
+
+# 更新新品产品负责人
+update_data:
+  user_id: 15
+
+# 获取新品列表
+list_params:
+  page: 1
+  page_size: 20
+
+# 复原归档状态
+restore_to_archived_status:
+  new_product_id: 48
