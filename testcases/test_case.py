@@ -2,164 +2,113 @@ import configparser
 import os
 import pytest
 import allure
+import jsonpath
 from common.commom_requests import Requests
 from common.logger import logger
 from common.data_loader import test_data_loader
-import warnings
 
-# 配置忽略警告
-warnings.filterwarnings("ignore")
-
-# 获取配置文件路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
 config_file_path = os.path.join(current_dir, '..', 'config.ini')
 
 
-def get_token():
-    """获取API访问令牌"""
-    config = configparser.ConfigParser()
-    config.read(config_file_path, encoding='utf-8')
-    return config.get('API', 'TOKEN')
+@allure.story("自动搜索策略")
+class TestAutoSearchPolicy:
+    policy_task_id = None
+    root_task_id = None
 
+    @classmethod
+    def setup_class(cls):
+        logger.info("初始化测试配置")
+        config = configparser.ConfigParser()
+        config.read(config_file_path)
 
-@pytest.fixture(scope="class")
-def setup_class(request):
-    """类级别的fixture，用于共享测试数据"""
-    token = get_token()
-    assert token, "无法获取有效的API令牌，请检查config.ini配置"
+        cls.headers = {
+            "Authorization": config.get('API', 'TOKEN'),
+            "advertising-api": config.get('API', 'advertising'),
+            "Content-Type": "application/json"
+        }
 
-    headers = {"Authorization": token}
-    request.cls.headers = headers
+        cls.data1 = test_data_loader.get_test_data("auto_search_data_noe")
+        cls.data2 = test_data_loader.get_test_data("auto_search_data_tow")
+        cls.data3 = test_data_loader.get_test_data("auto_search_data_three")
+    @allure.tag("创建策略")
+    def test_01_create(self):
+        """创建策略"""
+        logger.info("执行第一步：创建策略")
 
-    # 从YAML文件加载测试数据
-    try:
-        request.cls.test_product_data = test_data_loader.get_test_data("new_product")
-        request.cls.update_data = test_data_loader.get_test_data("update_data")
-        request.cls.list_params = test_data_loader.get_test_data("list_params")
-        request.cls.restore_to_archived_status = test_data_loader.get_test_data("restore_to_archived_status")
-
-        logger.info("测试数据加载成功")
-    except Exception as e:
-        logger.error(f"加载测试数据失败: {e}")
-        raise
-
-
-@pytest.fixture
-def new_product_id(setup_class, request):
-    """获取新品ID的fixture"""
-    logger.info("** 开始获取新品ID **")
-
-    # 使用外部化的列表参数
-    json_data = request.cls.list_params
-
-    with allure.step("获取新品列表"):
-        res = Requests(headers=request.cls.headers).post_request(
-            "/svip/product/getNewProductList",
-            json=json_data
+        # 发送请求
+        res = Requests(headers=self.headers).post_request(
+            "/python/v1/ad_strategy/auto_search_policy",
+            json=self.data1
         )
-        logger.info(f"请求URL: {res.request.url}")
-        logger.info(f"请求参数: {json_data}")
-        logger.info(f"请求响应: {res.json()}")
+        response = res.json()
+        logger.info(f"响应状态码: {res.status_code}")
 
-    assert res.json()["code"] == 200, "获取新品列表失败"
-    result_data = res.json()["data"]["result"]
-    assert result_data, "新品列表为空，无法获取new_product_id"
+        # 验证响应
+        assert response["code"] == 200
 
-    return result_data[0]["new_product_id"]
+        # 提取任务ID
+        task_id = jsonpath.jsonpath(response, '$.data.policy_task_id')
+        if task_id:
+            TestAutoSearchPolicy.policy_task_id = task_id[0]
+            logger.info(f"提取到policy_task_id: {TestAutoSearchPolicy.policy_task_id}")
+        else:
+            logger.warning("未找到policy_task_id")
 
+    @allure.tag("提交策略")
+    def test_02_submit(self):
+        """提交策略"""
+        logger.info("执行第二步：提交策略")
 
-@allure.story("新品管理")
-class TestProductManagement:
-    """新品管理测试套件"""
+        if not TestAutoSearchPolicy.policy_task_id:
+            logger.error("缺少policy_task_id")
+            pytest.fail("需要先执行第一步")
 
-    @allure.tag("新增新品")
-    def test_add_new_product(self, setup_class):
-        """测试新增新品功能"""
-        logger.info("** 开始执行新增新品测试 **")
+        # 准备数据
+        submit_data = self.data2.copy()
+        submit_data["policy_task_id"] = TestAutoSearchPolicy.policy_task_id
+        logger.info(f"使用policy_task_id: {TestAutoSearchPolicy.policy_task_id}")
 
-        with allure.step("准备测试数据"):
-            test_data = self.test_product_data.copy()
+        # 发送请求
+        res = Requests(headers=self.headers).post_request(
+            "/python/v1/ad_strategy/auto_search_policy_submit",
+            json=submit_data
+        )
+        response = res.json()
+        logger.info(f"响应状态码: {res.status_code}")
 
-        with allure.step("发送新增新品请求"):
-            res = Requests(headers=self.headers).put_request(
-                "/svip/product/addNewProduct",
-                json=test_data
-            )
-            response = res.json()
-            logger.info(f"API响应: {response}")
-        with allure.step("验证响应"):
-            assert response["code"] == 200, f"新增失败: {response.get('message', '未知错误')}"
-            assert "data" in response, "响应中缺少data字段"
+        # 验证响应
+        assert response["code"] == 200
+        logger.info("策略提交成功")
+        # 提取任务ID
+        root_task_id = jsonpath.jsonpath(response, '$.data.root_task_id')
+        if root_task_id:
+            TestAutoSearchPolicy.root_task_id = root_task_id[0]
+            logger.info(f"提取到root_task_id: {TestAutoSearchPolicy.root_task_id}")
+        else:
+            logger.warning("未找到root_task_id")
 
-    @allure.tag("获取新品列表")
-    def test_get_product_list(self, setup_class):
-        """测试获取新品列表功能"""
-        logger.info("** 开始执行获取新品列表测试 **")
+    @allure.tag("提交策略")
+    def test_03_auto_search_root_submit(self):
+        """提交策略"""
+        logger.info("执行第三步：提交策略")
 
-        with allure.step("准备请求参数"):
-            params = self.list_params
+        if not TestAutoSearchPolicy.root_task_id:
+            logger.error("缺少root_task_id")
 
-        with allure.step("发送获取列表请求"):
-            res = Requests(headers=self.headers).post_request(
-                "/svip/product/getNewProductList",
-                json=params
-            )
-            response = res.json()
-            logger.info(f"API响应: {response}")
+        # 准备数据
+        submit3_data = self.data3.copy()
+        submit3_data["root_task_id"] = TestAutoSearchPolicy.root_task_id
+        logger.info(f"使用root_task_id: {TestAutoSearchPolicy.root_task_id}")
 
-        with allure.step("验证响应"):
-            assert response["code"] == 200, f"获取列表失败: {response.get('message', '未知错误')}"
-            assert "data" in response, "响应中缺少data字段"
-            assert "result" in response["data"], "响应中缺少result字段"
+        # 发送请求
+        res = Requests(headers=self.headers).post_request(
+            "/python/v1/ad_strategy/auto_search_root_submit",
+            json=submit3_data
+        )
+        response = res.json()
+        logger.info(f"响应状态码: {res.status_code}")
 
-    @allure.tag("更新负责人")
-    def test_update_product_manager(self, setup_class, new_product_id):
-        """测试更新产品负责人功能"""
-        logger.info("** 开始执行更新负责人测试 **")
-
-        with allure.step("准备更新数据"):
-            update_data = {
-                "new_product_id": new_product_id,
-                "user_id": self.update_data["user_id"],
-            }
-
-        with allure.step("发送更新请求"):
-            res = Requests(headers=self.headers).put_request(
-                "/svip/product/updateNewProduct",
-                json=update_data
-            )
-            response = res.json()
-            logger.info(f"API响应: {response}")
-
-        with allure.step("验证响应"):
-            assert response["code"] == 200, f"更新失败: {response.get('message', '未知错误')}"
-
-    @allure.tag("新品归档")
-    def test_archive_product(self, setup_class, new_product_id):
-        """测试新品归档功能"""
-        logger.info("** 开始执行新品归档测试 **")
-        with allure.step("准备归档请求"):
-            url = f"/svip/product/deleteNewProduct?new_product_id={new_product_id}"
-
-        with allure.step("发送归档请求"):
-            res = Requests(headers=self.headers).put_request(url)
-            response = res.json()
-            logger.info(f"API响应: {response}")
-
-        with allure.step("验证响应"):
-            assert response["code"] == 200, f"归档失败: {response.get('message', '未知错误')}"
-
-    @allure.tag("复原新品")
-    def test_recover_product(self, setup_class,new_product_id):
-        """测试复原新品功能"""
-        logger.info("** 开始执行复原新品测试 **")
-
-        with allure.step("准备复原请求"):
-            url = f"/svip/product/recoverNewProduct?new_product_id={new_product_id}"
-        with allure.step("发送复原请求"):
-            res = Requests(headers=self.headers).put_request(url)
-            response = res.json()
-            logger.info(f"API响应: {response}")
-
-        with allure.step("验证响应"):
-            assert response["code"] == 200, f"复原失败: {response.get('message', '未知错误')}"
+        # 验证响应
+        assert response["code"] == 200
+        logger.info("策略提交成功")
