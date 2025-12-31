@@ -1,71 +1,141 @@
 [ {
-  "uid" : "b36a60d6389be9df",
-  "name" : "test_archive_product",
+  "uid" : "a3f9b45f08e90094",
+  "name" : "test_auto_targeting_policy_a",
   "time" : {
-    "start" : 1751440878411,
-    "stop" : 1751440878411,
-    "duration" : 0
-  },
-  "status" : "failed",
-  "severity" : "normal"
-}, {
-  "uid" : "c8931c2ca1de943c",
-  "name" : "test_add_new_product",
-  "time" : {
-    "start" : 1751440878124,
-    "stop" : 1751440878232,
-    "duration" : 108
-  },
-  "status" : "failed",
-  "severity" : "normal"
-}, {
-  "uid" : "42d7eb7a953f5cfd",
-  "name" : "test_set_operations_manager",
-  "time" : {
-    "start" : 1752481314726,
-    "stop" : 1752481315040,
-    "duration" : 314
+    "start" : 1774427879435,
+    "stop" : 1774427880439,
+    "duration" : 1004
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "951547dc302d11bb",
-  "name" : "test_get_list_product",
+  "uid" : "f6b9aff3200adda9",
+  "name" : "test_02_submit_auto_search_policy_a",
   "time" : {
-    "start" : 1752481314469,
-    "stop" : 1752481314721,
-    "duration" : 252
+    "start" : 1774427733672,
+    "stop" : 1774427733919,
+    "duration" : 247
   },
   "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "3b6d081b84f2d135",
-  "name" : "test_get_product_list",
+  "uid" : "da0fa5724160087",
+  "name" : "test_03_submit_root_task_a",
   "time" : {
-    "start" : 1751440878278,
-    "stop" : 1751440878329,
-    "duration" : 51
+    "start" : 1774427733925,
+    "stop" : 1774427734017,
+    "duration" : 92
   },
-  "status" : "failed",
+  "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "ed3ede296a1d2309",
-  "name" : "test_new_porduct",
+  "uid" : "5138422700b8abd4",
+  "name" : "test_05_submit_auto_search_policy_b",
   "time" : {
-    "start" : 1752481314261,
-    "stop" : 1752481314355,
-    "duration" : 94
+    "start" : 1774427879258,
+    "stop" : 1774427879337,
+    "duration" : 79
   },
-  "status" : "failed",
+  "status" : "passed",
   "severity" : "normal"
 }, {
-  "uid" : "14fcebce56dc0b3d",
-  "name" : "test_update_product_manager",
+  "uid" : "99187803ed30f7f5",
+  "name" : "test_broad_targeting_policy",
   "time" : {
-    "start" : 1751440878334,
-    "stop" : 1751440878334,
-    "duration" : 0
+    "start" : 1774427883083,
+    "stop" : 1774427884985,
+    "duration" : 1902
   },
-  "status" : "failed",
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "d5bdc904617971a0",
+  "name" : "test_01_create_auto_search_policy_a",
+  "time" : {
+    "start" : 1774427698374,
+    "stop" : 1774427733662,
+    "duration" : 35288
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "2d4d02a40144c868",
+  "name" : "test_phrase_targeting_policy_sb",
+  "time" : {
+    "start" : 1774427914576,
+    "stop" : 1774427917999,
+    "duration" : 3423
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cf44de663debd7ed",
+  "name" : "test_asin_targeting_policy",
+  "time" : {
+    "start" : 1774427884992,
+    "stop" : 1774427896713,
+    "duration" : 11721
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "34042a089c726740",
+  "name" : "test_phrase_search_policy_sb",
+  "time" : {
+    "start" : 1774427896719,
+    "stop" : 1774427914566,
+    "duration" : 17847
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8ff74cbef7a0c27f",
+  "name" : "test_auto_targeting_policy_big_keyword",
+  "time" : {
+    "start" : 1774427881553,
+    "stop" : 1774427883076,
+    "duration" : 1523
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "5443fd8f429a3bc3",
+  "name" : "test_04_create_auto_search_policy_b",
+  "time" : {
+    "start" : 1774427734024,
+    "stop" : 1774427879252,
+    "duration" : 145228
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "646837709da6cc8",
+  "name" : "test_auto_targeting_policy_b",
+  "time" : {
+    "start" : 1774427880450,
+    "stop" : 1774427881547,
+    "duration" : 1097
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "44e5ab1059bdaf24",
+  "name" : "test_asin_targeting_policy_sb",
+  "time" : {
+    "start" : 1774427918005,
+    "stop" : 1774427921397,
+    "duration" : 3392
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ed05e454734c6b72",
+  "name" : "test_06_submit_root_task_b",
+  "time" : {
+    "start" : 1774427879343,
+    "stop" : 1774427879420,
+    "duration" : 77
+  },
+  "status" : "passed",
   "severity" : "normal"
 } ]
