@@ -1,4 +1,4 @@
-# 新增自动搜索词-同类第一步接口数据
+# 新增自动搜索词-紧密第一步接口数据
 auto_search_data_noe:
   ad_type: sp
   rule_model: A
@@ -37,7 +37,7 @@ auto_search_data_noe:
       allowed_campaign_name: "US-17*33in 电暖垫-手动-B0F3W5JF4W"
       asin_allowed_campaign_name: "US-17*33in 电暖垫-ASIN组-B0F3W5JF4W"
 
-# 新增自动搜索词-同类第二步接口数据
+# 新增自动搜索词-紧密第二步接口数据
 auto_search_data_tow:
       policy_task_id: "{{policy_task_id}}"
       keyword_update_data: [ ]
@@ -45,9 +45,370 @@ auto_search_data_tow:
       asin_update_data: [ ]
       asin_related_info_data: [ ]
 
-# 新增自动搜索词-同类第三步接口数据
+# 新增自动搜索词-紧密第三步接口数据
 auto_search_data_three:
       module: "sp_auto_search_a_normal"
       root_task_id: "{{root_task_id}}"
       keyword_related_info_data: [ ]
       asin_related_info_data: [ ]
+
+# 新增自动搜索词-宽泛第一步接口数据
+auto_search_data_noe_b:
+  ad_type: sp
+  rule_model: B
+  module: sp_auto_search_b_normal
+  campaign_configs:
+    - asin_down_limit: 1.8
+      asin_up_limit: 2.5
+      campaign_id: 151636291523007
+      campaign_name: "US-17*33in 电暖垫-自动2-B0F3W5JF4W"
+      enable_shared_data: 1
+      hight_down_limit: 1.8
+      hight_up_limit: 2.5
+      low_related_up_limit: 0.1
+      price: 39.99
+      profit_margin_down_limit: 0
+      strategy_config: 0
+      target_acos: 35
+      target_cr: 20
+  ad_group_configs:
+    - ad_campaign_rule_type: null
+      ad_campaign_type: sp_auto_b_campaign
+      ad_group_id: 106177895842165
+      ad_group_name: 自动2-宽泛
+      ad_group_type: sp_auto_search_b_group
+      ad_type: sp
+      campaign_id: 151636291523007
+      campaign_name: "US-17*33in 电暖垫-自动2-B0F3W5JF4W"
+      default_bid: 1.2
+      id: 8747
+      manual_targeting: ProductAuto
+      portfolio_id: 22396183415978
+      portfolio_name: 加热垫
+      sys_ad_group_id: 8747
+      allowed_campaign_id: 122356139507810
+      asin_allowed_campaign_id: 59678734728722
+      allowed_campaign_name: "US-17*33in 电暖垫-手动-B0F3W5JF4W"
+      asin_allowed_campaign_name: "US-17*33in 电暖垫-ASIN组-B0F3W5JF4W"
+#
+# 新增自动搜索词-宽泛第二步接口数据
+auto_search_data_tow_b:
+      policy_task_id: "{{policy_task_id_b}}"
+      keyword_update_data: [ ]
+      keyword_related_info_data: [ ]
+      asin_update_data: [ ]
+      asin_related_info_data: [ ]
+
+# 新增自动搜索词-宽泛第三步接口数据
+auto_search_data_three_b:
+      module: "sp_auto_search_b_normal"
+      root_task_id: "{{root_task_id_b}}"
+      keyword_related_info_data: [ ]
+      asin_related_info_data: [ ]
+
+# 新增自动投放-紧密接口数据
+auto_targeting_policy_a:
+  ad_type: "sp"
+  rule_model: "A"
+  strategy_mode: 2
+  module: "sp_auto_targeting_a_normal"
+  campaign_configs:
+    - campaign_id: 386582096614556
+      campaign_name: "US-17*33in 电暖垫-自动1-B0F3W5JF4W"
+      enable_shared_data: 1
+      low_related_up_limit: 0.1
+      price: 39.99
+      profit_margin_down_limit: 0
+      strategy_config: 0
+      target_acos: 35
+      target_cr: 20
+  ad_group_configs:
+    - ad_campaign_rule_type: null
+      ad_campaign_type: "sp_auto_a_campaign"
+      ad_group_id: 549607339142042
+      ad_group_name: "自动1-紧密"
+      ad_group_type: "sp_auto_search_a_group"
+      ad_type: "sp"
+      campaign_id: 386582096614556
+      campaign_name: "US-17*33in 电暖垫-自动1-B0F3W5JF4W"
+      default_bid: 2.03
+      id: 8791
+      manual_targeting: "ProductAuto"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8791
+
+# 新增自动投放-宽泛接口数据
+auto_targeting_policy_b:
+  ad_type: "sp"
+  rule_model: "B"
+  strategy_mode: 2
+  module: "sp_auto_targeting_b_normal"
+  campaign_configs:
+    - campaign_id: 151636291523007
+      campaign_name: "US-17*33in 电暖垫-自动2-B0F3W5JF4W"
+      enable_shared_data: 1
+      low_related_up_limit: 0.1
+      price: 39.99
+      profit_margin_down_limit: 0
+      strategy_config: 0
+      target_acos: 35
+      target_cr: 20
+  ad_group_configs:
+    - ad_campaign_rule_type: null
+      ad_campaign_type: "sp_auto_b_campaign"
+      ad_group_id: 106177895842165
+      ad_group_name: "自动2-宽泛"
+      ad_group_type: "sp_auto_search_b_group"
+      ad_type: "sp"
+      campaign_id: 151636291523007
+      campaign_name: "US-17*33in 电暖垫-自动2-B0F3W5JF4W"
+      default_bid: 1.2
+      id: 8747
+      manual_targeting: "ProductAuto"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8747
+# 新增-SP大词投放接口数据
+large_phrase_keyword_normal:
+  ad_type: "sp"
+  rule_model: "normal"
+  module: "sp_large_phrase_keyword_normal"
+  ad_group_configs:
+    - ad_campaign_rule_type: "high_conversion_1"
+      ad_campaign_type: "sp_manual_campaign"
+      ad_group_id: 176040193029833
+      ad_group_name: "大词组"
+      ad_group_type: "sp_large_phrase_keyword_group"
+      ad_type: "sp"
+      campaign_id: 122356139507810
+      campaign_name: "US-17*33in 电暖垫-手动-B0F3W5JF4W"
+      default_bid: 1.9
+      id: 8761
+      manual_targeting: "KeywordTargeting"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8761
+  campaign_configs:
+    - campaign_id: 122356139507810
+      campaign_name: "US-17*33in 电暖垫-手动-B0F3W5JF4W"
+      core_keyword: "toilet paper"
+      enable_shared_data: 1
+      hight_down_limit: 1.8
+      hight_up_limit: 2.5
+      low_down_limit: 0.6
+      low_related_up_limit: 0.1
+      price: 39.99
+      profit_margin_down_limit: 0
+      strategy_config: 0
+      target_cr: 20
+# 新增广泛搜索词-高转化模型1接口数据
+
+
+
+# 新增SP-广泛投放-接口数据
+broad_targeting_policy:
+  ad_type: "sp"
+  rule_model: "normal"
+  module: "sp_broad_targeting_keyword_normal"
+  strategy_mode: 2
+  ad_group_configs:
+    - ad_campaign_rule_type: "high_conversion_1"
+      ad_campaign_type: "sp_manual_campaign"
+      ad_group_id: 26500014051094
+      ad_group_name: "广泛组"
+      ad_group_type: "sp_broad_keyword_group"
+      ad_type: "sp"
+      campaign_id: 122356139507810
+      campaign_name: "US-17*33in 电暖垫-手动-B0F3W5JF4W"
+      default_bid: 2.1
+      id: 8756
+      manual_targeting: "KeywordTargeting"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8756
+  campaign_configs:
+    - campaign_id: 122356139507810
+      campaign_name: "US-17*33in 电暖垫-手动-B0F3W5JF4W"
+      enable_shared_data: 1
+      hight_up_limit: 2.5
+      low_down_limit: 0.6
+      low_related_up_limit: 0.1
+      price: 39.99
+      profit_margin_down_limit: 0
+      strategy_config: 0
+      target_cr: 20
+
+# 新增SP-ASIN投放接口数据
+asin_targeting_policy:
+  ad_type: "sp"
+  rule_model: "normal"
+  module: "sp_asin_normal"
+  strategy_mode: 2
+  ad_group_configs:
+    - ad_campaign_rule_type: null
+      ad_campaign_type: "sp_asin_a_campaign"
+      ad_group_id: 142236948975246
+      ad_group_name: "高转化"
+      ad_group_type: "sp_asin_a_group"
+      ad_type: "sp"
+      campaign_id: 59678734728722
+      campaign_name: "US-17*33in 电暖垫-ASIN组-B0F3W5JF4W"
+      default_bid: 0.7
+      id: 8757
+      manual_targeting: "ProductTargeting"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8757
+    - ad_campaign_rule_type: null
+      ad_campaign_type: "sp_asin_a_campaign"
+      ad_group_id: 255560078239991
+      ad_group_name: "低转化"
+      ad_group_type: "sp_asin_a_group"
+      ad_type: "sp"
+      campaign_id: 59678734728722
+      campaign_name: "US-17*33in 电暖垫-ASIN组-B0F3W5JF4W"
+      default_bid: 0.7
+      id: 8758
+      manual_targeting: "ProductTargeting"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8758
+    - ad_campaign_rule_type: null
+      ad_campaign_type: "sp_asin_a_campaign"
+      ad_group_id: 472307831941850
+      ad_group_name: "评分"
+      ad_group_type: "sp_asin_a_group"
+      ad_type: "sp"
+      campaign_id: 59678734728722
+      campaign_name: "US-17*33in 电暖垫-ASIN组-B0F3W5JF4W"
+      default_bid: 0.7
+      id: 8792
+      manual_targeting: "ProductTargeting"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8792
+    - ad_campaign_rule_type: null
+      ad_campaign_type: "sp_asin_a_campaign"
+      ad_group_id: 544384308851716
+      ad_group_name: "价格"
+      ad_group_type: "sp_asin_a_group"
+      ad_type: "sp"
+      campaign_id: 59678734728722
+      campaign_name: "US-17*33in 电暖垫-ASIN组-B0F3W5JF4W"
+      default_bid: 0.7
+      id: 8790
+      manual_targeting: "ProductTargeting"
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      sys_ad_group_id: 8790
+  campaign_configs:
+    - asin_up_limit: 2.5
+      campaign_id: 59678734728722
+      campaign_name: "US-17*33in 电暖垫-ASIN组-B0F3W5JF4W"
+      enable_shared_data: 1
+      low_down_limit: 0.6
+      low_related_up_limit: 0.1
+      price: 39.99
+      profit_margin_down_limit: 0
+      strategy_config: 0
+      target_acos: 35
+      target_cr: 20
+# 新增SB-词组搜索接口数据
+phrase_search_policy_sb:
+  ad_type: "sb"
+  rule_model: "normal"
+  module: "sb_phrase_keyword_normal"
+  campaign_configs:
+    - low_down_limit: 0.6
+      low_related_up_limit: 0.1
+      hight_up_limit: 2.5
+      strategy_config: 0
+      price: 39.99
+      campaign_id: 320571578846679
+      profit_margin_down_limit: 0
+      target_acos: 35
+      campaign_name: "US-17*33in 电暖垫-视频ASIN-B0F3W5JF4W"
+      enable_shared_data: 1
+      target_cr: 20
+  ad_group_configs:
+    - ad_group_id: 301964173407340
+      sys_ad_group_id: 5626881
+      ad_group_type: "sb_phrase_keyword_group"
+      ad_group_name: "词组"
+      campaign_name: "US-17*33in 电暖垫-视频ASIN-B0F3W5JF4W"
+      manual_targeting: "KeywordTargeting"
+      campaign_id: 320571578846679
+      ad_campaign_type: "sb_manual_campaign"
+      ad_campaign_rule_type: null
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      id: 5626881
+      ad_type: "sb"
+      default_bid: 0
+# 新增SB-词组投放接口数据
+phrase_targeting_policy_sb:
+  ad_type: "sb"
+  rule_model: "normal"
+  module: "sb_phrase_targeting_keyword_normal"
+  strategy_mode: 2
+  ad_group_configs:
+    - ad_group_id: 301964173407340
+      sys_ad_group_id: 5626881
+      ad_group_type: "sb_phrase_keyword_group"
+      ad_group_name: "词组"
+      campaign_name: "US-17*33in 电暖垫-视频ASIN-B0F3W5JF4W"
+      manual_targeting: "KeywordTargeting"
+      campaign_id: 320571578846679
+      ad_campaign_type: "sb_manual_campaign"
+      ad_campaign_rule_type: null
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      id: 5626881
+      ad_type: "sb"
+      default_bid: 0
+  campaign_configs:
+    - low_down_limit: 0.6
+      low_related_up_limit: 0.1
+      hight_up_limit: 2.5
+      strategy_config: 0
+      price: 39.99
+      campaign_id: 320571578846679
+      profit_margin_down_limit: 0
+      target_acos: 35
+      campaign_name: "US-17*33in 电暖垫-视频ASIN-B0F3W5JF4W"
+      enable_shared_data: 1
+      target_cr: 20
+# 新增SB-ASIN投放接口数据
+asin_targeting_policy_sb:
+  ad_type: "sb"
+  rule_model: "normal"
+  module: "sb_asin_normal"
+  strategy_mode: 2
+  ad_group_configs:
+    - ad_group_id: 519770390750759
+      sys_ad_group_id: 5626882
+      ad_group_type: "sb_asin_group"
+      ad_group_name: "ASIN"
+      campaign_name: "US-17*33in 电暖垫-视频ASIN-B0F3W5JF4W"
+      manual_targeting: "ProductTargeting"
+      campaign_id: 320571578846679
+      ad_campaign_type: "sb_manual_campaign"
+      ad_campaign_rule_type: null
+      portfolio_id: 22396183415978
+      portfolio_name: "加热垫"
+      id: 5626882
+      ad_type: "sb"
+      default_bid: 0
+  campaign_configs:
+    - low_down_limit: 0.6
+      low_related_up_limit: 0.1
+      hight_up_limit: 2.5
+      strategy_config: 0
+      price: 39.99
+      campaign_id: 320571578846679
+      profit_margin_down_limit: 0
+      target_acos: 35
+      campaign_name: "US-17*33in 电暖垫-视频ASIN-B0F3W5JF4W"
+      enable_shared_data: 1
+      target_cr: 20
