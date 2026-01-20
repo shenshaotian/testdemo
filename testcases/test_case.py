@@ -2,355 +2,164 @@ import configparser
 import os
 import pytest
 import allure
-import jsonpath
 from common.commom_requests import Requests
 from common.logger import logger
 from common.data_loader import test_data_loader
+import warnings
 
+# 配置忽略警告
+warnings.filterwarnings("ignore")
+
+# 获取配置文件路径
 current_dir = os.path.dirname(os.path.abspath(__file__))
 config_file_path = os.path.join(current_dir, '..', 'config.ini')
 
 
-@allure.story("策略")
-class TestAutoSearchPolicy:
-    policy_task_id = None
-    root_task_id = None
-    policy_task_id_b = None
-    root_task_id_b = None
+def get_token():
+    """获取API访问令牌"""
+    config = configparser.ConfigParser()
+    config.read(config_file_path, encoding='utf-8')
+    return config.get('API', 'TOKEN')
 
-    @classmethod
-    def setup_class(cls):
-        logger.info("初始化测试配置")
-        config = configparser.ConfigParser()
-        config.read(config_file_path)
 
-        cls.headers = {
-            "Authorization": config.get('API', 'TOKEN'),
-            "advertising-api": config.get('API', 'advertising'),
-            "Content-Type": "application/json"
-        }
+@pytest.fixture(scope="class")
+def setup_class(request):
+    """类级别的fixture，用于共享测试数据"""
+    token = get_token()
+    assert token, "无法获取有效的API令牌，请检查config.ini配置"
 
-        cls.data1 = test_data_loader.get_test_data("auto_search_data_noe")
-        cls.data2 = test_data_loader.get_test_data("auto_search_data_tow")
-        cls.data3 = test_data_loader.get_test_data("auto_search_data_three")
-        cls.data4 = test_data_loader.get_test_data("auto_search_data_noe_b")
-        cls.data5 = test_data_loader.get_test_data("auto_search_data_tow_b")
-        cls.data6 = test_data_loader.get_test_data("auto_search_data_three_b")
-        cls.data7 = test_data_loader.get_test_data("auto_targeting_policy_a")
-        cls.data8 = test_data_loader.get_test_data("auto_targeting_policy_b")
-        cls.data9 = test_data_loader.get_test_data("asin_targeting_policy")
-        cls.data10 = test_data_loader.get_test_data("phrase_search_policy_sb")
-        cls.data11 = test_data_loader.get_test_data("phrase_targeting_policy_sb")
-        cls.data12 = test_data_loader.get_test_data("asin_targeting_policy_sb")
-        cls.data13 = test_data_loader.get_test_data("broad_targeting_policy")
-        cls.data14 = test_data_loader.get_test_data("large_phrase_keyword_normal")
+    headers = {"Authorization": token}
+    request.cls.headers = headers
 
-    @allure.tag("自动搜索词紧密提交策略A")
-    def test_01_create_auto_search_policy_a(self):
-        """创建策略"""
-        logger.info("执行第一步：创建策略")
+    # 从YAML文件加载测试数据
+    try:
+        request.cls.test_product_data = test_data_loader.get_test_data("new_product")
+        request.cls.update_data = test_data_loader.get_test_data("update_data")
+        request.cls.list_params = test_data_loader.get_test_data("list_params")
+        request.cls.restore_to_archived_status = test_data_loader.get_test_data("restore_to_archived_status")
 
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_search_policy",
-            json=self.data1
+        logger.info("测试数据加载成功")
+    except Exception as e:
+        logger.error(f"加载测试数据失败: {e}")
+        raise
+
+
+@pytest.fixture
+def new_product_id(setup_class, request):
+    """获取新品ID的fixture"""
+    logger.info("** 开始获取新品ID **")
+
+    # 使用外部化的列表参数
+    json_data = request.cls.list_params
+
+    with allure.step("获取新品列表"):
+        res = Requests(headers=request.cls.headers).post_request(
+            "/svip/product/getNewProductList",
+            json=json_data
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
+        logger.info(f"请求URL: {res.request.url}")
+        logger.info(f"请求参数: {json_data}")
+        logger.info(f"请求响应: {res.json()}")
 
-        # 验证响应
-        assert response["code"] == 200
+    assert res.json()["code"] == 200, "获取新品列表失败"
+    result_data = res.json()["data"]["result"]
+    assert result_data, "新品列表为空，无法获取new_product_id"
 
-        # 提取任务ID
-        task_id = jsonpath.jsonpath(response, '$.data.policy_task_id')
-        if task_id:
-            TestAutoSearchPolicy.policy_task_id = task_id[0]
-            logger.info(f"提取到policy_task_id: {TestAutoSearchPolicy.policy_task_id}")
-        else:
-            logger.warning("未找到policy_task_id")
+    return result_data[0]["new_product_id"]
 
-    @allure.tag("紧密提交策略第二步")
-    def test_02_submit_auto_search_policy_a(self):
-        """提交策略"""
-        logger.info("执行第二步：提交策略")
 
-        if not TestAutoSearchPolicy.policy_task_id:
-            logger.error("缺少policy_task_id")
-            pytest.fail("需要先执行第一步")
+@allure.story("新品管理")
+class TestProductManagement:
+    """新品管理测试套件"""
 
-        # 准备数据
-        submit_data = self.data2.copy()
-        submit_data["policy_task_id"] = TestAutoSearchPolicy.policy_task_id
-        logger.info(f"使用policy_task_id: {TestAutoSearchPolicy.policy_task_id}")
+    @allure.tag("新增新品")
+    def test_add_new_product(self, setup_class):
+        """测试新增新品功能"""
+        logger.info("** 开始执行新增新品测试 **")
 
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_search_policy_submit",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
+        with allure.step("准备测试数据"):
+            test_data = self.test_product_data.copy()
 
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-        # 提取任务ID
-        root_task_id = jsonpath.jsonpath(response, '$.data.root_task_id')
-        if root_task_id:
-            TestAutoSearchPolicy.root_task_id = root_task_id[0]
-            logger.info(f"提取到root_task_id: {TestAutoSearchPolicy.root_task_id}")
-        else:
-            logger.warning("未找到root_task_id")
+        with allure.step("发送新增新品请求"):
+            res = Requests(headers=self.headers).put_request(
+                "/svip/product/addNewProduct",
+                json=test_data
+            )
+            response = res.json()
+            logger.info(f"API响应: {response}")
+        with allure.step("验证响应"):
+            assert response["code"] == 200, f"新增失败: {response.get('message', '未知错误')}"
+            assert "data" in response, "响应中缺少data字段"
 
-    @allure.tag("紧密提交策略第三步")
-    def test_03_submit_root_task_a(self):
-        """提交策略"""
-        logger.info("执行第三步：提交策略")
+    @allure.tag("获取新品列表")
+    def test_get_product_list(self, setup_class):
+        """测试获取新品列表功能"""
+        logger.info("** 开始执行获取新品列表测试 **")
 
-        if not TestAutoSearchPolicy.root_task_id:
-            logger.error("缺少root_task_id")
+        with allure.step("准备请求参数"):
+            params = self.list_params
 
-        # 准备数据
-        submit3_data = self.data3.copy()
-        submit3_data["root_task_id"] = TestAutoSearchPolicy.root_task_id
-        logger.info(f"使用root_task_id: {TestAutoSearchPolicy.root_task_id}")
+        with allure.step("发送获取列表请求"):
+            res = Requests(headers=self.headers).post_request(
+                "/svip/product/getNewProductList",
+                json=params
+            )
+            response = res.json()
+            logger.info(f"API响应: {response}")
 
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_search_root_submit",
-            json=submit3_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
+        with allure.step("验证响应"):
+            assert response["code"] == 200, f"获取列表失败: {response.get('message', '未知错误')}"
+            assert "data" in response, "响应中缺少data字段"
+            assert "result" in response["data"], "响应中缺少result字段"
 
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
+    @allure.tag("更新负责人")
+    def test_update_product_manager(self, setup_class, new_product_id):
+        """测试更新产品负责人功能"""
+        logger.info("** 开始执行更新负责人测试 **")
 
-    @allure.tag("自动搜索词宽泛提交策略B")
-    def test_04_create_auto_search_policy_b(self):
-        """创建策略"""
-        logger.info("执行第一步：创建策略")
+        with allure.step("准备更新数据"):
+            update_data = {
+                "new_product_id": new_product_id,
+                "user_id": self.update_data["user_id"],
+            }
 
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_search_policy",
-            json=self.data4
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
+        with allure.step("发送更新请求"):
+            res = Requests(headers=self.headers).put_request(
+                "/svip/product/updateNewProduct",
+                json=update_data
+            )
+            response = res.json()
+            logger.info(f"API响应: {response}")
 
-        # 验证响应
-        assert response["code"] == 200
+        with allure.step("验证响应"):
+            assert response["code"] == 200, f"更新失败: {response.get('message', '未知错误')}"
 
-        # 提取任务ID
-        task_id = jsonpath.jsonpath(response, '$.data.policy_task_id')
-        if task_id:
-            TestAutoSearchPolicy.policy_task_id_b = task_id[0]
-            logger.info(f"提取到policy_task_id_b: {TestAutoSearchPolicy.policy_task_id_b}")
-        else:
-            logger.warning("未找到policy_task_id_b")
+    @allure.tag("新品归档")
+    def test_archive_product(self, setup_class, new_product_id):
+        """测试新品归档功能"""
+        logger.info("** 开始执行新品归档测试 **")
+        with allure.step("准备归档请求"):
+            url = f"/svip/product/deleteNewProduct?new_product_id={new_product_id}"
 
-    @allure.tag("宽泛策略B第二步")
-    def test_05_submit_auto_search_policy_b(self):
-        """提交策略"""
-        logger.info("执行第二步：提交策略")
+        with allure.step("发送归档请求"):
+            res = Requests(headers=self.headers).put_request(url)
+            response = res.json()
+            logger.info(f"API响应: {response}")
 
-        if not TestAutoSearchPolicy.policy_task_id_b:
-            logger.error("缺少policy_task_id_b")
-            pytest.fail("需要先执行第一步")
+        with allure.step("验证响应"):
+            assert response["code"] == 200, f"归档失败: {response.get('message', '未知错误')}"
 
-        # 准备数据
-        submit_data = self.data5.copy()
-        submit_data["policy_task_id"] = TestAutoSearchPolicy.policy_task_id_b
-        logger.info(f"使用policy_task_id_b: {TestAutoSearchPolicy.policy_task_id_b}")
+    @allure.tag("复原新品")
+    def test_recover_product(self, setup_class,new_product_id):
+        """测试复原新品功能"""
+        logger.info("** 开始执行复原新品测试 **")
 
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_search_policy_submit",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
+        with allure.step("准备复原请求"):
+            url = f"/svip/product/recoverNewProduct?new_product_id={new_product_id}"
+        with allure.step("发送复原请求"):
+            res = Requests(headers=self.headers).put_request(url)
+            response = res.json()
+            logger.info(f"API响应: {response}")
 
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-        # 提取任务ID
-        root_task_id_b = jsonpath.jsonpath(response, '$.data.root_task_id')
-        if root_task_id_b:
-            TestAutoSearchPolicy.root_task_id_b = root_task_id_b[0]
-            logger.info(f"提取到root_task_id_b: {TestAutoSearchPolicy.root_task_id_b}")
-        else:
-            logger.warning("未找到root_task_id_b")
-
-    @allure.tag("宽泛策略B第三步")
-    def test_06_submit_root_task_b(self):
-        """提交策略"""
-        logger.info("执行第三步：提交策略")
-
-        if not TestAutoSearchPolicy.root_task_id_b:
-            logger.error("缺少root_task_id_b")
-            pytest.fail("需要先执行第一步")
-
-        # 准备数据
-        submit_data = self.data6.copy()
-        submit_data["root_task_id"] = TestAutoSearchPolicy.root_task_id_b
-        logger.info(f"使用root_task_id_b: {TestAutoSearchPolicy.root_task_id_b}")
-
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_search_root_submit",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("自动投放紧密")
-    def test_auto_targeting_policy_a(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data7.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_targeting_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("自动投放宽泛")
-    def test_auto_targeting_policy_b(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data8.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/auto_targeting_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("大词投放-SP")
-    def test_auto_targeting_policy_big_keyword(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data14.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/large_phrase_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-        logger.info(response)
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("广泛投放")
-    def test_broad_targeting_policy(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data13.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/broad_targeting_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("SP-ASIN投放")
-    def test_asin_targeting_policy(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data9.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_strategy/asin_targeting_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("SB-词组搜索")
-    def test_phrase_search_policy_sb(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data10.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_sb_strategy/phrase_search_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("SB-词组投放")
-    def test_phrase_targeting_policy_sb(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data11.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_sb_strategy/phrase_targeting_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
-
-    @allure.tag("SB-ASIN投放")
-    def test_asin_targeting_policy_sb(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data12.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
-            "/python/v1/ad_sb_strategy/asin_targeting_policy",
-            json=submit_data
-        )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
+        with allure.step("验证响应"):
+            assert response["code"] == 200, f"复原失败: {response.get('message', '未知错误')}"
