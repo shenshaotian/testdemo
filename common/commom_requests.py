@@ -79,7 +79,6 @@ class Requests:
         res = self.s.put(self.url + url, timeout=self.timeout)
         deal_with_res(json, res)
         return res
-
     # 魔法函数
     def __del__(self):
         """
@@ -92,6 +91,6 @@ class Requests:
 
 # # 测试一下下
 # if __name__ == '__main__':
-#     # # 这里域名设置的是http://httpbin.org，懂得都懂
+#     # # 这里域名设置的是http://httpbin.org，
 #     # get_res = Requests().get_request("/svip/homePage/OverviewUserGroupDoneRate")
 #     # print(get_res.text, "\n", )

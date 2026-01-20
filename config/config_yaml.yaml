@@ -3,7 +3,7 @@ user:
     username: shenshaotian
     password: shenshaotian
 
-test_url: https://www.test.aiautoex.com
+test_url: https://www.puchenerp.com
 
 mysql:
   db: amazon_data
