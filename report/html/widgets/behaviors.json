@@ -1,15 +1,15 @@
 {
   "total" : 1,
   "items" : [ {
-    "uid" : "fe9a5506de2f86ccd742f74dd85a5077",
-    "name" : "新品管理",
+    "uid" : "f925223acfe47f925e6e2ddfb7645052",
+    "name" : "策略",
     "statistic" : {
-      "failed" : 5,
+      "failed" : 0,
       "broken" : 0,
       "skipped" : 0,
-      "passed" : 2,
+      "passed" : 14,
       "unknown" : 0,
-      "total" : 7
+      "total" : 14
     }
   } ]
 }

@@ -1,0 +1,4 @@
+[2026-03-25 14:24:07,939][test_case.py 23][INFO]: 初始化测试配置
+[2026-03-25 14:24:08,932][test_case.py 51][INFO]: 执行第一步：创建策略
+[2026-03-25 14:24:44,436][test_case.py 59][INFO]: 响应状态码: 200
+[2026-03-25 14:24:44,437][test_case.py 68][INFO]: 提取到policy_task_id: ADPolicyAuto:SPAutoSearchPolicy:20260325:pOCZygwLtnGX

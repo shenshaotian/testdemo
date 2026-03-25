@@ -1,0 +1,3 @@
+INFO     log:test_case.py:216 执行：提交策略
+INFO     log:test_case.py:225 响应状态码: 200
+INFO     log:test_case.py:229 策略提交成功
