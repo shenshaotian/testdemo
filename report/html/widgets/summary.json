@@ -10,11 +10,20 @@
     "total" : 14
   },
   "time" : {
+<<<<<<< HEAD
     "start" : 1774427698374,
     "stop" : 1774427921397,
     "duration" : 223023,
     "minDuration" : 77,
     "maxDuration" : 145228,
     "sumDuration" : 222920
+=======
+    "start" : 1774419848932,
+    "stop" : 1774420074319,
+    "duration" : 225387,
+    "minDuration" : 85,
+    "maxDuration" : 145861,
+    "sumDuration" : 225291
+>>>>>>> master
   }
 }

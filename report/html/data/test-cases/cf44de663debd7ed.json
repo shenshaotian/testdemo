@@ -1,0 +1,159 @@
+{
+  "uid" : "cf44de663debd7ed",
+  "name" : "test_asin_targeting_policy",
+  "fullName" : "testcases.test_case.TestAutoSearchPolicy#test_asin_targeting_policy",
+  "historyId" : "ffd29229c19b1daa770112a426cc2913",
+  "time" : {
+    "start" : 1774427884992,
+    "stop" : 1774427896713,
+    "duration" : 11721
+  },
+  "description" : "提交策略",
+  "descriptionHtml" : "<p>提交策略</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ {
+    "name" : "_xunit_setup_class_fixture_TestAutoSearchPolicy",
+    "time" : {
+      "start" : 1774427697259,
+      "stop" : 1774427698372,
+      "duration" : 1113
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "testStage" : {
+    "description" : "提交策略",
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ {
+      "uid" : "382545b555a7193d",
+      "name" : "请求的url",
+      "source" : "382545b555a7193d.attach",
+      "type" : "text/plain",
+      "size" : 69
+    }, {
+      "uid" : "3e80c8d3ee42bc8",
+      "name" : "请求的方法",
+      "source" : "3e80c8d3ee42bc8.attach",
+      "type" : "text/plain",
+      "size" : 4
+    }, {
+      "uid" : "9fd79ed3be83c3ee",
+      "name" : "请求的headers",
+      "source" : "9fd79ed3be83c3ee.attach",
+      "type" : "text/plain",
+      "size" : 1933
+    }, {
+      "uid" : "5ebf41b73a1f88f8",
+      "name" : "入参报文",
+      "source" : "5ebf41b73a1f88f8.attach",
+      "type" : "text/plain",
+      "size" : 2188
+    }, {
+      "uid" : "955dc7ce4e41eaea",
+      "name" : "响应时间",
+      "source" : "955dc7ce4e41eaea.attach",
+      "type" : "text/plain",
+      "size" : 8
+    }, {
+      "uid" : "5c5435a8b366290f",
+      "name" : "状态码",
+      "source" : "5c5435a8b366290f.attach",
+      "type" : "text/plain",
+      "size" : 3
+    }, {
+      "uid" : "d240f9557acf0ab3",
+      "name" : "响应报文",
+      "source" : "d240f9557acf0ab3.attach",
+      "type" : "text/plain",
+      "size" : 662329
+    }, {
+      "uid" : "f73aba50897b836a",
+      "name" : "log",
+      "source" : "f73aba50897b836a.txt",
+      "type" : "text/plain",
+      "size" : 151
+    }, {
+      "uid" : "3b44f117dececab5",
+      "name" : "stderr",
+      "source" : "3b44f117dececab5.txt",
+      "type" : "text/plain",
+      "size" : 215
+    } ],
+    "parameters" : [ ],
+    "hasContent" : true,
+    "stepsCount" : 0,
+    "attachmentsCount" : 9,
+    "shouldDisplayMessage" : false
+  },
+  "afterStages" : [ {
+    "name" : "_xunit_setup_class_fixture_TestAutoSearchPolicy::0",
+    "time" : {
+      "start" : 1774427921397,
+      "stop" : 1774427921398,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "hasContent" : false,
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false
+  } ],
+  "labels" : [ {
+    "name" : "story",
+    "value" : "策略"
+  }, {
+    "name" : "tag",
+    "value" : "SP-ASIN投放"
+  }, {
+    "name" : "parentSuite",
+    "value" : "testcases"
+  }, {
+    "name" : "suite",
+    "value" : "test_case"
+  }, {
+    "name" : "subSuite",
+    "value" : "TestAutoSearchPolicy"
+  }, {
+    "name" : "host",
+    "value" : "SST"
+  }, {
+    "name" : "thread",
+    "value" : "37524-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "testcases.test_case"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "SP-ASIN投放" ]
+  },
+  "source" : "cf44de663debd7ed.json",
+  "parameterValues" : [ ]
+}

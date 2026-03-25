@@ -3,7 +3,7 @@ import os
 import pytest
 import allure
 import jsonpath
-from common.commom_requests import Requests
+from common.common_requests import Requests
 from common.logger import logger
 from common.data_loader import test_data_loader
 

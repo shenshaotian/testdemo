@@ -1,0 +1,5 @@
+INFO     log:test_case.py:75 执行第二步：提交策略
+INFO     log:test_case.py:84 使用policy_task_id: ADPolicyAuto:SPAutoSearchPolicy:20260325:ol4azMOs
+INFO     log:test_case.py:92 响应状态码: 200
+INFO     log:test_case.py:96 策略提交成功
+INFO     log:test_case.py:101 提取到root_task_id: ADPolicyAuto:SPAutoSearchRoot:20260325:mbDxcXfd4il

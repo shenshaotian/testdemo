@@ -1,0 +1,3 @@
+[2026-03-25 16:35:34,023][test_case.py 133][INFO]: 执行第一步：创建策略
+[2026-03-25 16:37:59,252][test_case.py 141][INFO]: 响应状态码: 200
+[2026-03-25 16:37:59,252][test_case.py 150][INFO]: 提取到policy_task_id_b: ADPolicyAuto:SPAutoSearchPolicy:20260325:PrGCAtGl

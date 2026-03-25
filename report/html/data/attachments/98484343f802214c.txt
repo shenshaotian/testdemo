@@ -1,0 +1,5 @@
+[2026-03-25 16:37:59,259][test_case.py 157][INFO]: 执行第二步：提交策略
+[2026-03-25 16:37:59,259][test_case.py 166][INFO]: 使用policy_task_id_b: ADPolicyAuto:SPAutoSearchPolicy:20260325:PrGCAtGl
+[2026-03-25 16:37:59,335][test_case.py 174][INFO]: 响应状态码: 200
+[2026-03-25 16:37:59,336][test_case.py 178][INFO]: 策略提交成功
+[2026-03-25 16:37:59,336][test_case.py 183][INFO]: 提取到root_task_id_b: ADPolicyAuto:SPAutoSearchRoot:20260325:B5QFKvmgqaT

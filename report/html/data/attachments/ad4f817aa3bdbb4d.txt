@@ -1,0 +1,5 @@
+[2026-03-25 14:24:44,448][test_case.py 75][INFO]: 执行第二步：提交策略
+[2026-03-25 14:24:44,448][test_case.py 84][INFO]: 使用policy_task_id: ADPolicyAuto:SPAutoSearchPolicy:20260325:pOCZygwLtnGX
+[2026-03-25 14:24:44,618][test_case.py 92][INFO]: 响应状态码: 200
+[2026-03-25 14:24:44,618][test_case.py 96][INFO]: 策略提交成功
+[2026-03-25 14:24:44,618][test_case.py 101][INFO]: 提取到root_task_id: ADPolicyAuto:SPAutoSearchRoot:20260325:wEU4sNkWp7It

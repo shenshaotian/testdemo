@@ -1,0 +1,114 @@
+[2026-03-21 16:36:17,836][test_case.py 23][INFO]: 初始化测试配置
+[2026-03-21 16:36:18,938][test_case.py 51][INFO]: 执行第一步：创建策略
+[2026-03-21 16:36:19,068][test_case.py 59][INFO]: 响应状态码: 200
+[2026-03-21 16:36:19,182][test_case.py 75][INFO]: 执行第二步：提交策略
+[2026-03-21 16:36:19,182][test_case.py 78][ERROR]: 缺少policy_task_id
+[2026-03-21 16:36:19,207][test_case.py 108][INFO]: 执行第三步：提交策略
+[2026-03-21 16:36:19,207][test_case.py 111][ERROR]: 缺少root_task_id
+[2026-03-21 16:36:19,207][test_case.py 116][INFO]: 使用root_task_id: None
+[2026-03-21 16:36:19,298][test_case.py 124][INFO]: 响应状态码: 200
+[2026-03-21 16:36:19,325][test_case.py 133][INFO]: 执行第一步：创建策略
+[2026-03-21 16:36:19,648][test_case.py 141][INFO]: 响应状态码: 200
+[2026-03-21 16:36:19,673][test_case.py 157][INFO]: 执行第二步：提交策略
+[2026-03-21 16:36:19,673][test_case.py 160][ERROR]: 缺少policy_task_id_b
+[2026-03-21 16:36:19,699][test_case.py 190][INFO]: 执行第三步：提交策略
+[2026-03-21 16:36:19,700][test_case.py 193][ERROR]: 缺少root_task_id_b
+[2026-03-21 16:36:19,724][test_case.py 216][INFO]: 执行：提交策略
+[2026-03-21 16:36:19,803][test_case.py 225][INFO]: 响应状态码: 200
+[2026-03-21 16:36:19,828][test_case.py 234][INFO]: 执行：提交策略
+[2026-03-21 16:36:19,912][test_case.py 243][INFO]: 响应状态码: 200
+[2026-03-21 16:36:19,942][test_case.py 252][INFO]: 执行：提交策略
+[2026-03-21 16:36:20,256][test_case.py 261][INFO]: 响应状态码: 200
+[2026-03-21 16:36:20,256][test_case.py 262][INFO]: {'code': 4101, 'data': None, 'message': '请先登录'}
+[2026-03-21 16:36:20,282][test_case.py 271][INFO]: 执行：提交策略
+[2026-03-21 16:36:20,376][test_case.py 280][INFO]: 响应状态码: 200
+[2026-03-21 16:36:20,403][test_case.py 289][INFO]: 执行：提交策略
+[2026-03-21 16:36:20,488][test_case.py 298][INFO]: 响应状态码: 200
+[2026-03-21 16:36:20,514][test_case.py 307][INFO]: 执行：提交策略
+[2026-03-21 16:36:20,597][test_case.py 316][INFO]: 响应状态码: 200
+[2026-03-21 16:36:20,623][test_case.py 325][INFO]: 执行：提交策略
+[2026-03-21 16:36:21,955][test_case.py 334][INFO]: 响应状态码: 200
+[2026-03-21 16:36:21,979][test_case.py 343][INFO]: 执行：提交策略
+[2026-03-21 16:36:22,044][test_case.py 352][INFO]: 响应状态码: 200
+[2026-03-21 16:41:23,409][test_case.py 23][INFO]: 初始化测试配置
+[2026-03-21 16:41:24,517][test_case.py 51][INFO]: 执行第一步：创建策略
+[2026-03-21 16:41:58,199][test_case.py 59][INFO]: 响应状态码: 200
+[2026-03-21 16:41:58,200][test_case.py 68][INFO]: 提取到policy_task_id: ADPolicyAuto:SPAutoSearchPolicy:20260321:mVHXh5fvSgp
+[2026-03-21 16:41:58,208][test_case.py 75][INFO]: 执行第二步：提交策略
+[2026-03-21 16:41:58,208][test_case.py 84][INFO]: 使用policy_task_id: ADPolicyAuto:SPAutoSearchPolicy:20260321:mVHXh5fvSgp
+[2026-03-21 16:41:58,390][test_case.py 92][INFO]: 响应状态码: 200
+[2026-03-21 16:41:58,390][test_case.py 96][INFO]: 策略提交成功
+[2026-03-21 16:41:58,390][test_case.py 101][INFO]: 提取到root_task_id: ADPolicyAuto:SPAutoSearchRoot:20260321:PQ8IuSh6
+[2026-03-21 16:41:58,396][test_case.py 108][INFO]: 执行第三步：提交策略
+[2026-03-21 16:41:58,396][test_case.py 116][INFO]: 使用root_task_id: ADPolicyAuto:SPAutoSearchRoot:20260321:PQ8IuSh6
+[2026-03-21 16:41:58,485][test_case.py 124][INFO]: 响应状态码: 200
+[2026-03-21 16:41:58,486][test_case.py 128][INFO]: 策略提交成功
+[2026-03-21 16:41:58,493][test_case.py 133][INFO]: 执行第一步：创建策略
+[2026-03-21 16:44:23,736][test_case.py 141][INFO]: 响应状态码: 200
+[2026-03-21 16:44:23,737][test_case.py 150][INFO]: 提取到policy_task_id_b: ADPolicyAuto:SPAutoSearchPolicy:20260321:tfEg5TI0
+[2026-03-21 16:44:23,747][test_case.py 157][INFO]: 执行第二步：提交策略
+[2026-03-21 16:44:23,747][test_case.py 166][INFO]: 使用policy_task_id_b: ADPolicyAuto:SPAutoSearchPolicy:20260321:tfEg5TI0
+[2026-03-21 16:44:23,817][test_case.py 174][INFO]: 响应状态码: 200
+[2026-03-21 16:44:23,817][test_case.py 178][INFO]: 策略提交成功
+[2026-03-21 16:44:23,818][test_case.py 183][INFO]: 提取到root_task_id_b: ADPolicyAuto:SPAutoSearchRoot:20260321:9grywTGdf
+[2026-03-21 16:44:23,825][test_case.py 190][INFO]: 执行第三步：提交策略
+[2026-03-21 16:44:23,825][test_case.py 199][INFO]: 使用root_task_id_b: ADPolicyAuto:SPAutoSearchRoot:20260321:9grywTGdf
+[2026-03-21 16:44:23,906][test_case.py 207][INFO]: 响应状态码: 200
+[2026-03-21 16:44:23,906][test_case.py 211][INFO]: 策略提交成功
+[2026-03-21 16:44:23,920][test_case.py 216][INFO]: 执行：提交策略
+[2026-03-21 16:44:25,442][test_case.py 225][INFO]: 响应状态码: 200
+[2026-03-21 16:44:25,442][test_case.py 229][INFO]: 策略提交成功
+[2026-03-21 16:44:25,450][test_case.py 234][INFO]: 执行：提交策略
+[2026-03-21 16:44:26,616][test_case.py 243][INFO]: 响应状态码: 200
+[2026-03-21 16:44:26,616][test_case.py 247][INFO]: 策略提交成功
+[2026-03-21 16:44:26,624][test_case.py 252][INFO]: 执行：提交策略
+[2026-03-21 16:44:28,803][test_case.py 261][INFO]: 响应状态码: 200
+[2026-03-21 16:44:28,803][test_case.py 262][INFO]: {'message': '执行成功', 'code': 200, 'data': {'errors': [], 'target_cr': 20.0, 'policy_task_id': 'ADPolicyAuto:SPKeywordLargePhrase:20260321:AWKmwnXBzx6', 'result': [{'ad_group_id_from': 176040193029833, 'ad_group_id_to': 176040193029833, 'ad_group_name_from': '大词组', 'ad_group_name_to': '大词组', 'campaign_id_from': 122356139507810, 'campaign_id_to': 122356139507810, 'campaign_name_from': 'US-17*33in 电暖垫-手动-B0F3W5JF4W', 'campaign_name_to': 'US-17*33in 电暖垫-手动-B0F3W5JF4W', 'data_show_30': '41 14 34.15% 0.6% 15.94% 2.07 (90)', 'data_show_7': '0 0 0.0% 0.0% 0.0% 0.0 (90)', 'data_show_999': '870 183 21.03% 0.16% 24.04% 1.95 (仅参考)', 'data_show_all': '1065 245 23.0% 0.16% 21.95% 1.96 (共享)', 'date_time': '2026-03-21 01:44:26', 'date_type': 30, 'entity_type': 'Keyword', 'keyword': 'heating pad for neck and shoulders and back', 'keyword_id': 318510954153811, 'match_type': 'EXACT', 'module': 'sp_large_phrase_keyword_normal', 'new_bid': 2.0, 'old_bid': 1.8, 'update_bid': 2.0, 'operate_task_id': 5, 'operation_type': 'base_sp_update_keyword_bid', 'portfolio_id': 22396183415978, 'portfolio_name': '加热垫', 'profile_id': 192795951605339, 'suggest_up_bid': 3.08, 'suggest_median_bid': 2.61, 'suggest_down_bid': 2.21, 'order': 14, 'target_click': 5, 'target_cr': 0.2, 'task_id': 0, 'ad_group_tag_to': 'sp_large_phrase_keyword_group', 'campaign_tag_to': 'sp_manual_campaign', 'click': 41, 'last_update_data': '1.6-1.8', 'mark': '', 'last_update_time': '2025-12-21', 'old_state': 'ENABLED', 'state': 'ENABLED', 'operation_name': '调整SP关键词竞价', 'last_update_days': 90.0, 'all_clicks': 1065, 'before_data_show': '', 'adjust_times': 3, 'keyword_tag_from': 1003, 'keyword_tag_to': 1003, 'ad_type_to': 'sp', 'entity_id': 318510954153811, 'entity': 'heating pad for neck and shoulders and back', 'filter_data': {'click_7': 0, 'order_7': 0, 'click_30': 41, 'order_30': 14, 'click_999': 126, 'order_999': 27, 'click_all': 1065, 'order_all': 245}, 'product_targeting': 'heating pad for neck and shoulders and back', 'product_targeting_id': 318510954153811, 'entity_root': 'heat pad neck shoulder back', 'related_type': 2, 'shared_group_id': 298, 'portfolio_shared_id': 38, 'ai_suggest_related_type': None, 'tips': 0}]}}
+[2026-03-21 16:44:28,804][test_case.py 266][INFO]: 策略提交成功
+[2026-03-21 16:44:28,811][test_case.py 271][INFO]: 执行：提交策略
+[2026-03-21 16:44:30,734][test_case.py 280][INFO]: 响应状态码: 200
+[2026-03-21 16:44:30,735][test_case.py 284][INFO]: 策略提交成功
+[2026-03-21 16:44:30,741][test_case.py 289][INFO]: 执行：提交策略
+[2026-03-21 16:44:41,992][test_case.py 298][INFO]: 响应状态码: 200
+[2026-03-21 16:44:41,992][test_case.py 302][INFO]: 策略提交成功
+[2026-03-21 16:44:41,999][test_case.py 307][INFO]: 执行：提交策略
+[2026-03-21 16:44:59,424][test_case.py 316][INFO]: 响应状态码: 200
+[2026-03-21 16:44:59,424][test_case.py 320][INFO]: 策略提交成功
+[2026-03-21 16:44:59,430][test_case.py 325][INFO]: 执行：提交策略
+[2026-03-21 16:45:05,300][test_case.py 334][INFO]: 响应状态码: 200
+[2026-03-21 16:45:05,300][test_case.py 338][INFO]: 策略提交成功
+[2026-03-21 16:45:05,309][test_case.py 343][INFO]: 执行：提交策略
+[2026-03-21 16:45:08,188][test_case.py 352][INFO]: 响应状态码: 200
+[2026-03-21 16:45:08,189][test_case.py 356][INFO]: 策略提交成功
+[2026-03-21 18:40:34,023][test_case.py 15][INFO]: 初始化测试配置
+[2026-03-21 18:40:35,010][test_case.py 80][INFO]: 执行第一步：创建策略
+[2026-03-21 18:41:05,977][test_case.py 91][INFO]: 执行第二步：提交策略
+[2026-03-21 18:41:05,995][test_case.py 109][INFO]: 执行第三步：提交策略
+[2026-03-21 18:41:06,015][test_case.py 124][INFO]: 执行第一步：创建策略
+[2026-03-21 18:41:36,741][test_case.py 135][INFO]: 执行第二步：提交策略
+[2026-03-21 18:41:36,758][test_case.py 153][INFO]: 执行第三步：提交策略
+[2026-03-21 18:41:36,776][test_case.py 168][INFO]: 执行：提交自动投放紧密策略
+[2026-03-21 18:41:38,600][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:41:38,600][test_case.py 173][INFO]: 策略提交成功
+[2026-03-21 18:41:38,606][test_case.py 178][INFO]: 执行：提交自动投放宽泛策略
+[2026-03-21 18:41:39,834][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:41:39,834][test_case.py 183][INFO]: 策略提交成功
+[2026-03-21 18:41:39,840][test_case.py 188][INFO]: 执行：提交大词投放策略
+[2026-03-21 18:41:41,751][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:41:41,751][test_case.py 193][INFO]: {'message': '执行成功', 'code': 200, 'data': {'errors': [], 'target_cr': 20.0, 'policy_task_id': 'ADPolicyAuto:SPKeywordLargePhrase:20260321:Bf69C54W', 'result': [{'ad_group_id_from': 176040193029833, 'ad_group_id_to': 176040193029833, 'ad_group_name_from': '大词组', 'ad_group_name_to': '大词组', 'campaign_id_from': 122356139507810, 'campaign_id_to': 122356139507810, 'campaign_name_from': 'US-17*33in 电暖垫-手动-B0F3W5JF4W', 'campaign_name_to': 'US-17*33in 电暖垫-手动-B0F3W5JF4W', 'data_show_30': '41 14 34.15% 0.6% 15.94% 2.07 (90)', 'data_show_7': '0 0 0.0% 0.0% 0.0% 0.0 (90)', 'data_show_999': '870 183 21.03% 0.16% 24.04% 1.95 (仅参考)', 'data_show_all': '1065 245 23.0% 0.16% 21.95% 1.96 (共享)', 'date_time': '2026-03-21 03:41:39', 'date_type': 30, 'entity_type': 'Keyword', 'keyword': 'heating pad for neck and shoulders and back', 'keyword_id': 318510954153811, 'match_type': 'EXACT', 'module': 'sp_large_phrase_keyword_normal', 'new_bid': 2.0, 'old_bid': 1.8, 'update_bid': 2.0, 'operate_task_id': 5, 'operation_type': 'base_sp_update_keyword_bid', 'portfolio_id': 22396183415978, 'portfolio_name': '加热垫', 'profile_id': 192795951605339, 'suggest_up_bid': 3.08, 'suggest_median_bid': 2.61, 'suggest_down_bid': 2.21, 'order': 14, 'target_click': 5, 'target_cr': 0.2, 'task_id': 0, 'ad_group_tag_to': 'sp_large_phrase_keyword_group', 'campaign_tag_to': 'sp_manual_campaign', 'click': 41, 'last_update_data': '1.6-1.8', 'mark': '', 'last_update_time': '2025-12-21', 'old_state': 'ENABLED', 'state': 'ENABLED', 'operation_name': '调整SP关键词竞价', 'last_update_days': 90.0, 'all_clicks': 1065, 'before_data_show': '', 'adjust_times': 3, 'keyword_tag_from': 1003, 'keyword_tag_to': 1003, 'ad_type_to': 'sp', 'entity_id': 318510954153811, 'entity': 'heating pad for neck and shoulders and back', 'filter_data': {'click_7': 0, 'order_7': 0, 'click_30': 41, 'order_30': 14, 'click_999': 126, 'order_999': 27, 'click_all': 1065, 'order_all': 245}, 'product_targeting': 'heating pad for neck and shoulders and back', 'product_targeting_id': 318510954153811, 'entity_root': 'heat pad neck shoulder back', 'related_type': 2, 'shared_group_id': 298, 'portfolio_shared_id': 38, 'ai_suggest_related_type': None, 'tips': 0}]}}
+[2026-03-21 18:41:41,752][test_case.py 194][INFO]: 策略提交成功
+[2026-03-21 18:41:41,758][test_case.py 199][INFO]: 执行：提交广泛投放策略
+[2026-03-21 18:41:43,845][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:41:43,845][test_case.py 204][INFO]: 策略提交成功
+[2026-03-21 18:41:43,853][test_case.py 211][INFO]: 执行：提交 SP-ASIN 投放策略
+[2026-03-21 18:41:55,949][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:41:55,950][test_case.py 216][INFO]: 策略提交成功
+[2026-03-21 18:41:55,955][test_case.py 223][INFO]: 执行：提交 SB-词组搜索策略
+[2026-03-21 18:42:14,071][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:42:14,071][test_case.py 228][INFO]: 策略提交成功
+[2026-03-21 18:42:14,077][test_case.py 233][INFO]: 执行：提交 SB-词组投放策略
+[2026-03-21 18:42:18,281][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:42:18,282][test_case.py 238][INFO]: 策略提交成功
+[2026-03-21 18:42:18,289][test_case.py 243][INFO]: 执行：提交 SB-ASIN 投放策略
+[2026-03-21 18:42:21,223][test_case.py 28][INFO]: 响应状态码: 200
+[2026-03-21 18:42:21,223][test_case.py 248][INFO]: 策略提交成功

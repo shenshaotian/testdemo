@@ -1,0 +1,4 @@
+INFO     log:test_case.py:190 执行第三步：提交策略
+INFO     log:test_case.py:199 使用root_task_id_b: ADPolicyAuto:SPAutoSearchRoot:20260325:B5QFKvmgqaT
+INFO     log:test_case.py:207 响应状态码: 200
+INFO     log:test_case.py:211 策略提交成功

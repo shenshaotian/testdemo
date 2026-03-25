@@ -1,0 +1,3 @@
+[2026-03-25 14:24:44,739][test_case.py 133][INFO]: 执行第一步：创建策略
+[2026-03-25 14:27:10,599][test_case.py 141][INFO]: 响应状态码: 200
+[2026-03-25 14:27:10,599][test_case.py 150][INFO]: 提取到policy_task_id_b: ADPolicyAuto:SPAutoSearchPolicy:20260325:DM6Tz2L5iQqK

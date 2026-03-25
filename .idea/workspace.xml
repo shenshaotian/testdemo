@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="114d4229-aab0-440c-b17c-2b1f09f428c8" name="Changes" comment="解决合并冲突">
       <change afterPath="$PROJECT_DIR$/Webhook.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -243,6 +244,14 @@
       <change beforePath="$PROJECT_DIR$/report/tmp/fe2f1fb4-04ea-4b96-8e50-3e914aeb24a6-result.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test_data/products.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/products.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testcases/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/config.ini" afterDir="false" />
+=======
+    <list default="true" id="114d4229-aab0-440c-b17c-2b1f09f428c8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Webhook.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/common_requests.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/common_requests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_yaml.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_yaml.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_data/products.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/test_data/products.yaml" afterDir="false" />
+>>>>>>> master
       <change beforePath="$PROJECT_DIR$/testcases/test_case.py" beforeDir="false" afterPath="$PROJECT_DIR$/testcases/test_case.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -281,6 +290,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -288,8 +298,17 @@
     &quot;git-widget-placeholder&quot;: &quot;Cherry-picking in feature/correct-start2&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/test_case_demo&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Merging feature/correct-start",
+    "last_opened_file_path": "C:/pytestDemo-master",
+    "settings.editor.selected.configurable": "vcs.Git"
+>>>>>>> master
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\test_case_demo" />

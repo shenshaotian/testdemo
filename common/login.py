@@ -1,7 +1,7 @@
 # 导入获取yaml方法
 from common.yaml_config import GetConfig
 # 导入封装好的request
-from common.commom_requests import Requests
+from common.common_requests import Requests
 
 
 def login(user):

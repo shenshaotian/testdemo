@@ -1,0 +1,5 @@
+INFO     log:test_case.py:157 执行第二步：提交策略
+INFO     log:test_case.py:166 使用policy_task_id_b: ADPolicyAuto:SPAutoSearchPolicy:20260325:PrGCAtGl
+INFO     log:test_case.py:174 响应状态码: 200
+INFO     log:test_case.py:178 策略提交成功
+INFO     log:test_case.py:183 提取到root_task_id_b: ADPolicyAuto:SPAutoSearchRoot:20260325:B5QFKvmgqaT

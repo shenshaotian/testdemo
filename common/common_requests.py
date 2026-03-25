@@ -79,6 +79,26 @@ class Requests:
         res = self.s.put(self.url + url, timeout=self.timeout)
         deal_with_res(json, res)
         return res
+<<<<<<< HEAD:common/commom_requests.py
+=======
+
+<<<<<<< HEAD:common/common_requests.py
+    def _request(self, url, data=None, json=None):
+        if data:
+            res = self.s.put(self.url + url, data=data, timeout=self.timeout)
+            deal_with_res(data, res)
+            return res
+        if json:
+            res = self.s.put(self.url + url, json=json, timeout=self.timeout)
+            deal_with_res(json, res)
+            return res
+        res = self.s.put(self.url + url, timeout=self.timeout)
+        deal_with_res(json, res)
+        return res
+
+=======
+>>>>>>> c5002ad2edb9731bf9f76aeab5b44fdf559cc4f0:common/commom_requests.py
+>>>>>>> master:common/common_requests.py
     # 魔法函数
     def __del__(self):
         """

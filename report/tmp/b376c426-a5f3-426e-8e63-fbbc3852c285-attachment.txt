@@ -1,0 +1,4 @@
+INFO     log:test_case.py:23 初始化测试配置
+INFO     log:test_case.py:51 执行第一步：创建策略
+INFO     log:test_case.py:59 响应状态码: 200
+INFO     log:test_case.py:68 提取到policy_task_id: ADPolicyAuto:SPAutoSearchPolicy:20260325:ol4azMOs
