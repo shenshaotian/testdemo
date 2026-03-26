@@ -17,14 +17,14 @@ class GetConfig:
             # Loader=yaml.FullLoader意思为加载完整的YAML语言，避免任意代码执行
             self.env = yaml.load(env_file, Loader=yaml.FullLoader)
 
-    def get_username_password(self, sam):
+    def get_username_password(self, uesr):
         """
         读取配置文件里的账号密码
         :param user: 需要取哪一个账号的就输入对应的名称，比如我想去york的账密，user就传“york”
         :return:
         """
         # 直接return出来对应的账号密码
-        return self.env["user"][f"{sam}"]["username"], self.env["user"][f"{sam}"]["password"]
+        return self.env["user"][f"{uesr}"]["username"], self.env["user"][f"{uesr}"]["password"]
 
     def get_url(self):
         """
@@ -46,7 +46,7 @@ class GetConfig:
 # 测试一下
 if __name__ == "__main__":
     getConfig = GetConfig()
-    print(getConfig.get_username_password("sam"))
+    print(getConfig.get_username_password("uesr"))
     print(getConfig.get_url())
     print(getConfig.get_mysql_config())
 

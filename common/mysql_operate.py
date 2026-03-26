@@ -82,7 +82,7 @@ class MysqlOperate:
         # 建立连接
         self.__conn_db()
         # 执行sql
-        self.cur.execute(sql)
+        self.cursor.execute(sql)
         # commit一下
         self.__commit()
         # 关闭数据库连接

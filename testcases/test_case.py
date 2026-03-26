@@ -29,21 +29,47 @@ class TestAutoSearchPolicy:
             "advertising-api": config.get('API', 'advertising'),
             "Content-Type": "application/json"
         }
+        cls.request = Requests(headers=cls.headers)
 
-        cls.data1 = test_data_loader.get_test_data("auto_search_data_noe")
-        cls.data2 = test_data_loader.get_test_data("auto_search_data_tow")
-        cls.data3 = test_data_loader.get_test_data("auto_search_data_three")
-        cls.data4 = test_data_loader.get_test_data("auto_search_data_noe_b")
-        cls.data5 = test_data_loader.get_test_data("auto_search_data_tow_b")
-        cls.data6 = test_data_loader.get_test_data("auto_search_data_three_b")
-        cls.data7 = test_data_loader.get_test_data("auto_targeting_policy_a")
-        cls.data8 = test_data_loader.get_test_data("auto_targeting_policy_b")
-        cls.data9 = test_data_loader.get_test_data("asin_targeting_policy")
-        cls.data10 = test_data_loader.get_test_data("phrase_search_policy_sb")
-        cls.data11 = test_data_loader.get_test_data("phrase_targeting_policy_sb")
-        cls.data12 = test_data_loader.get_test_data("asin_targeting_policy_sb")
-        cls.data13 = test_data_loader.get_test_data("broad_targeting_policy")
-        cls.data14 = test_data_loader.get_test_data("large_phrase_keyword_normal")
+        cls.auto_search_create_a = test_data_loader.get_test_data("auto_search_data_noe")
+        cls.auto_search_submit_a = test_data_loader.get_test_data("auto_search_data_tow")
+        cls.auto_search_root_a = test_data_loader.get_test_data("auto_search_data_three")
+        cls.auto_search_create_b = test_data_loader.get_test_data("auto_search_data_noe_b")
+        cls.auto_search_submit_b = test_data_loader.get_test_data("auto_search_data_tow_b")
+        cls.auto_search_root_b = test_data_loader.get_test_data("auto_search_data_three_b")
+        cls.auto_targeting_a = test_data_loader.get_test_data("auto_targeting_policy_a")
+        cls.auto_targeting_b = test_data_loader.get_test_data("auto_targeting_policy_b")
+        cls.asin_targeting_sp = test_data_loader.get_test_data("asin_targeting_policy")
+        cls.phrase_search_sb = test_data_loader.get_test_data("phrase_search_policy_sb")
+        cls.phrase_targeting_sb = test_data_loader.get_test_data("phrase_targeting_policy_sb")
+        cls.asin_targeting_sb = test_data_loader.get_test_data("asin_targeting_policy_sb")
+        cls.broad_targeting = test_data_loader.get_test_data("broad_targeting_policy")
+        cls.large_phrase_keyword = test_data_loader.get_test_data("large_phrase_keyword_normal")
+
+    def _post_and_verify(self, url, data, policy_name="策略"):
+        """通用POST请求并验证响应"""
+        logger.info(f"执行：提交{policy_name}")
+        res = self.request.post_request(url, json=data.copy())
+        response = res.json()
+        logger.info(f"响应状态码: {res.status_code}")
+        assert response["code"] == 200, f"{policy_name}提交失败: {response}"
+        logger.info(f"{policy_name}提交成功")
+        return response
+
+    def _extract_id(self, response, json_path, id_name):
+        """从响应中提取ID"""
+        result = jsonpath.jsonpath(response, json_path)
+        if result:
+            logger.info(f"提取到{id_name}: {result[0]}")
+            return result[0]
+        logger.warning(f"未找到{id_name}")
+        return None
+
+    def _check_required_id(self, id_value, id_name, step_name):
+        """检查必需的ID是否存在"""
+        if not id_value:
+            logger.error(f"缺少{id_name}")
+            pytest.fail(f"需要先执行{step_name}")
 
     @allure.tag("自动搜索词紧密提交策略A")
     def test_01_create_auto_search_policy_a(self):
@@ -51,9 +77,9 @@ class TestAutoSearchPolicy:
         logger.info("执行第一步：创建策略")
 
         # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        res = self.request.post_request(
             "/python/v1/ad_strategy/auto_search_policy",
-            json=self.data1
+            json=self.auto_search_create_a
         )
         response = res.json()
         logger.info(f"响应状态码: {res.status_code}")
@@ -79,12 +105,12 @@ class TestAutoSearchPolicy:
             pytest.fail("需要先执行第一步")
 
         # 准备数据
-        submit_data = self.data2.copy()
+        submit_data = self.auto_search_submit_a.copy()
         submit_data["policy_task_id"] = TestAutoSearchPolicy.policy_task_id
         logger.info(f"使用policy_task_id: {TestAutoSearchPolicy.policy_task_id}")
 
         # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        res = self.request.post_request(
             "/python/v1/ad_strategy/auto_search_policy_submit",
             json=submit_data
         )
@@ -109,14 +135,15 @@ class TestAutoSearchPolicy:
 
         if not TestAutoSearchPolicy.root_task_id:
             logger.error("缺少root_task_id")
+            pytest.fail("需要先执行第二步")
 
         # 准备数据
-        submit3_data = self.data3.copy()
+        submit3_data = self.auto_search_root_a.copy()
         submit3_data["root_task_id"] = TestAutoSearchPolicy.root_task_id
         logger.info(f"使用root_task_id: {TestAutoSearchPolicy.root_task_id}")
 
         # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        res = self.request.post_request(
             "/python/v1/ad_strategy/auto_search_root_submit",
             json=submit3_data
         )
@@ -133,9 +160,9 @@ class TestAutoSearchPolicy:
         logger.info("执行第一步：创建策略")
 
         # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        res = self.request.post_request(
             "/python/v1/ad_strategy/auto_search_policy",
-            json=self.data4
+            json=self.auto_search_create_b
         )
         response = res.json()
         logger.info(f"响应状态码: {res.status_code}")
@@ -161,12 +188,12 @@ class TestAutoSearchPolicy:
             pytest.fail("需要先执行第一步")
 
         # 准备数据
-        submit_data = self.data5.copy()
+        submit_data = self.auto_search_submit_b.copy()
         submit_data["policy_task_id"] = TestAutoSearchPolicy.policy_task_id_b
         logger.info(f"使用policy_task_id_b: {TestAutoSearchPolicy.policy_task_id_b}")
 
         # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        res = self.request.post_request(
             "/python/v1/ad_strategy/auto_search_policy_submit",
             json=submit_data
         )
@@ -194,12 +221,12 @@ class TestAutoSearchPolicy:
             pytest.fail("需要先执行第一步")
 
         # 准备数据
-        submit_data = self.data6.copy()
+        submit_data = self.auto_search_root_b.copy()
         submit_data["root_task_id"] = TestAutoSearchPolicy.root_task_id_b
         logger.info(f"使用root_task_id_b: {TestAutoSearchPolicy.root_task_id_b}")
 
         # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        res = self.request.post_request(
             "/python/v1/ad_strategy/auto_search_root_submit",
             json=submit_data
         )
@@ -212,145 +239,73 @@ class TestAutoSearchPolicy:
 
     @allure.tag("自动投放紧密")
     def test_auto_targeting_policy_a(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data7.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """自动投放紧密策略"""
+        self._post_and_verify(
             "/python/v1/ad_strategy/auto_targeting_policy",
-            json=submit_data
+            self.auto_targeting_a,
+            "自动投放紧密策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
 
     @allure.tag("自动投放宽泛")
     def test_auto_targeting_policy_b(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data8.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """自动投放宽泛策略"""
+        self._post_and_verify(
             "/python/v1/ad_strategy/auto_targeting_policy",
-            json=submit_data
+            self.auto_targeting_b,
+            "自动投放宽泛策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
 
     @allure.tag("大词投放-SP")
     def test_auto_targeting_policy_big_keyword(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data14.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """大词投放策略"""
+        response = self._post_and_verify(
             "/python/v1/ad_strategy/large_phrase_policy",
-            json=submit_data
+            self.large_phrase_keyword,
+            "大词投放策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
         logger.info(response)
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
 
     @allure.tag("广泛投放")
     def test_broad_targeting_policy(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data13.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """广泛投放策略"""
+        self._post_and_verify(
             "/python/v1/ad_strategy/broad_targeting_policy",
-            json=submit_data
+            self.broad_targeting,
+            "广泛投放策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
 
     @allure.tag("SP-ASIN投放")
     def test_asin_targeting_policy(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data9.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """SP-ASIN投放策略"""
+        self._post_and_verify(
             "/python/v1/ad_strategy/asin_targeting_policy",
-            json=submit_data
+            self.asin_targeting_sp,
+            "SP-ASIN投放策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
 
     @allure.tag("SB-词组搜索")
     def test_phrase_search_policy_sb(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data10.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """SB词组搜索策略"""
+        self._post_and_verify(
             "/python/v1/ad_sb_strategy/phrase_search_policy",
-            json=submit_data
+            self.phrase_search_sb,
+            "SB词组搜索策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
 
     @allure.tag("SB-词组投放")
     def test_phrase_targeting_policy_sb(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data11.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """SB词组投放策略"""
+        self._post_and_verify(
             "/python/v1/ad_sb_strategy/phrase_targeting_policy",
-            json=submit_data
+            self.phrase_targeting_sb,
+            "SB词组投放策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")
 
     @allure.tag("SB-ASIN投放")
     def test_asin_targeting_policy_sb(self):
-        """提交策略"""
-        logger.info("执行：提交策略")
-        # 准备数据
-        submit_data = self.data12.copy()
-        # 发送请求
-        res = Requests(headers=self.headers).post_request(
+        """SB-ASIN投放策略"""
+        self._post_and_verify(
             "/python/v1/ad_sb_strategy/asin_targeting_policy",
-            json=submit_data
+            self.asin_targeting_sb,
+            "SB-ASIN投放策略"
         )
-        response = res.json()
-        logger.info(f"响应状态码: {res.status_code}")
-
-        # 验证响应
-        assert response["code"] == 200
-        logger.info("策略提交成功")

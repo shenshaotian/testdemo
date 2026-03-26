@@ -18,7 +18,7 @@ class Requests:
         self.s = requests.Session()
         # 在session实例上挂载adapter实例，目的就是请求异常时，自动重试
         # self.s.mount("https://www.baidu.com", HTTPAdapter(max_retries=3))
-        self.s.mount("/svip/homePage/OverviewUserGroupDoneRate", HTTPAdapter(max_retries=3))
+        self.s.mount("https://", HTTPAdapter(max_retries=3))
 
         # 公共请求头设置，把对应的值设置好
         self.s.headers = headers
