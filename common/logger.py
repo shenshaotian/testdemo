@@ -1,7 +1,6 @@
 import logging, time, os
 
 BASE_PATH = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-# 定义日志文件路径
 LOG_PATH = os.path.join(BASE_PATH, "log")
 if not os.path.exists(LOG_PATH):
     os.mkdir(LOG_PATH)
@@ -13,6 +12,10 @@ class Logger():
         self.logname = os.path.join(LOG_PATH, "{}.log".format(time.strftime("%Y%m%d")))
         self.logger = logging.getLogger("log")
         self.logger.setLevel(logging.DEBUG)
+
+        # 避免重复 addHandler：logger 是全局单例，多次 import 会叠加 handler
+        if self.logger.handlers:
+            return
 
         self.formater = logging.Formatter(
             '[%(asctime)s][%(filename)s %(lineno)d][%(levelname)s]: %(message)s')
