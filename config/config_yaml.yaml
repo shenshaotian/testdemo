@@ -3,7 +3,24 @@ user:
     username: shenshaotian
     password: shenshaotian
 
-test_url: https://www.puchenerp.com
+test_url: https://www.test2.puchenerp.com
+
+advertising_api: eyJjb3VudHJ5IjoiVVMiLCJjcmVhdGVfaWQiOjg4LCJlbmRfZGF0ZSI6IjIwMjYtMDMtMTkiLCJpZCI6MTM2Mzg0MCwiaXNfY29tbW9uIjp0cnVlLCJvcmlnaW5hbF9zZWxsZXJfbmFtZSI6IllhbiBRdW4gWGluZyBHdWFuZyIsInByb2ZpbGVfaWQiOiIxOTI3OTU5NTE2MDUzMzkiLCJyZWdpb24iOiJOQSIsInJlZ2lvbl9zaG9wX2lkIjoiOTAxNjk4Mzc1NTc3NTEzNzk5Iiwic2VsbGVyX2lkIjoiQTNFREVTVUs0QUpKMkciLCJzZWxsZXJfbmFtZSI6IjEyNC1VUyIsInNob3BfdHlwZSI6InNlbGxlciIsInN0YXJ0X2RhdGUiOiIyMDI2LTAzLTEwIiwidXBkYXRlX2F0IjoiLSIsInZhbHVlIjoiMTI0LVVTMTM2Mzg0MCIsImxhYmVsIjoiMTI0LVVTIiwicG9ydGZvbGlvX2lkIjoiMjIzOTYxODM0MTU5NzgifQ==
+
+login:
+  login_url: /python/v1/api/system/passport/login
+  captcha_url: /python/v1/api/system/passport/get_captcha
+  company_name: 深圳市仕锦源科技有限公司
+  rsa_public_key: |
+    -----BEGIN PUBLIC KEY-----
+    MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAthEPtmQDHI7mDR4Lq+L5
+    lqIu4OHYnRp0ifsBhu40x5IDn7QlNXf0XFxS/I7iUgdKZr18IoYph5az7hmrmFCE
+    g4DSU1LBD4aNb6cvJviU4qjEdXN0z0gNQ0sVHCF/UZA1Gix7Dk5NdRUfjw9gv/w2
+    BUpOule8k/nvwLcm6d3qwQdiJCpl+SpIQwVA2LXj9dI/+ejzPkOjLkbtT9qGAnpi
+    PbWnIKArCbLXk2slNTTRolnlLa6rxQV4/bYHCFDaRbFPXMMlsMm+qxNvNl9owWQ2
+    QQSnsyIFyPmteYwVd03lHuflZ0yejTS/A/3/KGJ+DNkRn5Pw4JgKNUn3SiYLAuSI
+    VQIDAQAB
+    -----END PUBLIC KEY-----
 
 mysql:
   db: amazon_data

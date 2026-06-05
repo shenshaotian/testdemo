@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>接口自动化测试平台</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --card: #1a2332;
+      --border: #2d3a4f;
+      --text: #e7ecf3;
+      --muted: #8b9cb3;
+      --primary: #3b82f6;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+    .header {
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
+    }
+    .header h1 { font-size: 1.4rem; font-weight: 600; }
+    .header p { color: var(--muted); font-size: 0.875rem; margin-top: 4px; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 24px 32px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .stat-card .label { color: var(--muted); font-size: 0.8rem; }
+    .stat-card .value { font-size: 2rem; font-weight: 700; margin-top: 8px; }
+    .stat-card.success .value { color: var(--success); }
+    .stat-card.danger .value { color: var(--danger); }
+    .stat-card.warning .value { color: var(--warning); }
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .panel h2 { font-size: 1rem; margin-bottom: 16px; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 12px;
+      align-items: end;
+    }
+    .field label {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .field input, .field select {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: 0.875rem;
+    }
+    .field input:focus { outline: none; border-color: var(--primary); }
+    .checkbox-field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.875rem;
+    }
+    .btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover:not(:disabled) { opacity: 0.9; }
+    .btn-sm {
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--primary);
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-sm:hover { background: rgba(59, 130, 246, 0.1); }
+    table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    th, td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    th { color: var(--muted); font-weight: 500; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .badge-success { background: rgba(34,197,94,0.15); color: var(--success); }
+    .badge-danger { background: rgba(239,68,68,0.15); color: var(--danger); }
+    .badge-warning { background: rgba(245,158,11,0.15); color: var(--warning); }
+    .badge-muted { background: rgba(139,156,179,0.15); color: var(--muted); }
+    .empty { text-align: center; color: var(--muted); padding: 40px; }
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      font-size: 0.875rem;
+      z-index: 100;
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    @media (max-width: 768px) {
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div>
+      <h1>接口自动化测试平台</h1>
+      <p>基于 pytest + Allure · 策略接口回归测试</p>
+    </div>
+    <div id="runningBadge"></div>
+  </header>
+
+  <div class="container">
+    <div class="stats" id="stats">
+      <div class="stat-card"><div class="label">总执行次数</div><div class="value" id="statTotal">-</div></div>
+      <div class="stat-card success"><div class="label">成功</div><div class="value" id="statSuccess">-</div></div>
+      <div class="stat-card danger"><div class="label">失败</div><div class="value" id="statFailed">-</div></div>
+      <div class="stat-card warning"><div class="label">运行中</div><div class="value" id="statRunning">-</div></div>
+    </div>
+
+    <div class="panel">
+      <h2>触发测试</h2>
+      <div class="form-row">
+        <div class="field">
+          <label>测试目标</label>
+          <select id="target">
+            <option value="testcases">全部用例 (testcases)</option>
+            <option value="testcases/test_case.py">策略用例 (test_case.py)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>标记过滤 (-m)</label>
+          <input id="markers" placeholder="可选，如 smoke" />
+        </div>
+        <div class="field">
+          <label>关键字过滤 (-k)</label>
+          <input id="keyword" placeholder="可选，如 auto_targeting" />
+        </div>
+        <div>
+          <label class="checkbox-field">
+            <input type="checkbox" id="notify" /> 飞书通知
+          </label>
+          <button class="btn btn-primary" id="runBtn" onclick="startRun()">运行测试</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>执行历史</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>任务 ID</th>
+            <th>状态</th>
+            <th>结果</th>
+            <th>目标</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id="runTable">
+          <tr><td colspan="7" class="empty">加载中...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const STATUS_MAP = {
+      pending: { text: "等待中", cls: "badge-muted" },
+      running: { text: "运行中", cls: "badge-warning" },
+      success: { text: "通过", cls: "badge-success" },
+      failed: { text: "失败", cls: "badge-danger" },
+      error: { text: "异常", cls: "badge-danger" },
+    };
+
+    function showToast(msg) {
+      const el = document.createElement("div");
+      el.className = "toast";
+      el.textContent = msg;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3000);
+    }
+
+    async function fetchStats() {
+      const res = await fetch("/api/stats");
+      const data = await res.json();
+      document.getElementById("statTotal").textContent = data.total_runs;
+      document.getElementById("statSuccess").textContent = data.success_runs;
+      document.getElementById("statFailed").textContent = data.failed_runs;
+      document.getElementById("statRunning").textContent = data.running_runs;
+    }
+
+    async function fetchRuns() {
+      const res = await fetch("/api/runs");
+      const data = await res.json();
+      const tbody = document.getElementById("runTable");
+      if (!data.runs.length) {
+        tbody.innerHTML = '<tr><td colspan="7" class="empty">暂无执行记录</td></tr>';
+        return;
+      }
+      tbody.innerHTML = data.runs.map(run => {
+        const st = STATUS_MAP[run.status] || STATUS_MAP.pending;
+        const result = run.total
+          ? `${run.passed}/${run.total} 通过` + (run.failed ? `，${run.failed} 失败` : "")
+          : "-";
+        const reportBtn = ["success", "failed"].includes(run.status)
+          ? `<a class="btn-sm" href="/reports/${run.id}/html/index.html" target="_blank">查看报告</a>`
+          : "-";
+        return `<tr>
+          <td><code>${run.id}</code></td>
+          <td><span class="badge ${st.cls}">${st.text}</span></td>
+          <td>${result}</td>
+          <td>${run.target}</td>
+          <td>${run.created_at}</td>
+          <td>${run.finished_at || "-"}</td>
+          <td>${reportBtn}</td>
+        </tr>`;
+      }).join("");
+    }
+
+    async function checkStatus() {
+      const res = await fetch("/api/status");
+      const data = await res.json();
+      const btn = document.getElementById("runBtn");
+      const badge = document.getElementById("runningBadge");
+      btn.disabled = data.is_running;
+      btn.textContent = data.is_running ? "执行中..." : "运行测试";
+      badge.innerHTML = data.is_running
+        ? '<span class="badge badge-warning">● 任务执行中</span>'
+        : "";
+      return data.is_running;
+    }
+
+    async function refresh() {
+      await Promise.all([fetchStats(), fetchRuns(), checkStatus()]);
+    }
+
+    async function startRun() {
+      const body = {
+        target: document.getElementById("target").value,
+        markers: document.getElementById("markers").value || null,
+        keyword: document.getElementById("keyword").value || null,
+        notify: document.getElementById("notify").checked,
+      };
+      try {
+        const res = await fetch("/api/runs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
+        const data = await res.json();
+        if (!res.ok) {
+          showToast(data.detail || "提交失败");
+          return;
+        }
+        showToast(`任务已提交: ${data.run_id}`);
+        refresh();
+      } catch (e) {
+        showToast("网络错误");
+      }
+    }
+
+    refresh();
+    setInterval(async () => {
+      const running = await checkStatus();
+      if (running) fetchRuns();
+    }, 3000);
+    setInterval(refresh, 10000);
+  </script>
+</body>
+</html>

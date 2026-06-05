@@ -34,12 +34,25 @@ class GetConfig:
         # 直接return出来对应的测试域名
         return self.env["test_url"]
 
+    def get_advertising_api(self):
+        """
+        获取广告上下文 header（advertising-api）
+        :return: str
+        """
+        return self.env["advertising_api"]
+
+    def get_login_config(self):
+        """
+        获取登录相关配置（登录接口路径、验证码接口路径、公司名等）
+        :return: dict，包含 login_url / captcha_url / company_name
+        """
+        return self.env["login"]
+
     def get_mysql_config(self):
         """
         获取数据库配置
         :return:
         """
-        # 直接return出来对应yaml里的数据库参数，输出字典
         return self.env["mysql"]
 
 

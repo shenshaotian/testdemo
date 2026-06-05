@@ -30,6 +30,12 @@ class DataLoader:
         except json.JSONDecodeError as e:
             raise ValueError(f"JSON文件格式错误: {e}")
 
+    def load_all(self, filename: str = 'products.yaml') -> Dict[str, Any]:
+        """一次加载 yaml 文件中的全部数据，返回完整字典"""
+        if filename.endswith('.json'):
+            return self.load_json(filename)
+        return self.load_yaml(filename)
+
     def get_test_data(self, data_key: str, filename: str = 'products.yaml') -> Any:
         """获取特定的测试数据"""
         if filename.endswith('.json'):
